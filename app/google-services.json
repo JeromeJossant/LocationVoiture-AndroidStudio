@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "804295040892",
+    "project_id": "locationvoiture-2a70e",
+    "storage_bucket": "locationvoiture-2a70e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804295040892:android:728c6b088eb2f9ee6f4ef9",
+        "android_client_info": {
+          "package_name": "com.example.locationapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804295040892-6e3d25qv5vei96656ru9085nm77bu7ai.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.locationapplication",
+            "certificate_hash": "a4c167416a9e0e238d0714dfa4b02dac81d3a9b8"
+          }
+        },
+        {
+          "client_id": "804295040892-sn5uvtdtuji45afk2hi38g0l9sndfo9l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi59AWxLMg_DPj0ZRhItL3oSBau-qrjeo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804295040892-sn5uvtdtuji45afk2hi38g0l9sndfo9l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

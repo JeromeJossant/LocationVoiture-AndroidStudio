@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/my_color"
+    android:padding="16dp"
+    tools:context=".LocationVoitureCreateActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_bar_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/page_title"
+            android:text="Ajouter une nouvelle voiture à la location"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            android:textStyle="bold"/>
+        <ImageButton
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/save_location_btn"
+            android:src="@drawable/ic_baseline_done_24"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/white">
+
+        </ImageButton>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_bar_layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_bar_layout"
+            android:layout_marginVertical="26dp"
+            android:backgroundTint="@color/color_button"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/location_marque_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_corner"
+                android:backgroundTint="@color/color_button"
+                android:hint="Marque"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/location_modele_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_corner"
+                android:backgroundTint="@color/color_button"
+                android:hint="Modèle"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/location_version_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:backgroundTint="@color/color_button"
+                android:background="@drawable/rounded_corner"
+                android:hint="Version"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/location_place_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_corner"
+                android:backgroundTint="@color/color_button"
+                android:hint="Place"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/location_carburant_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_corner"
+                android:backgroundTint="@color/color_button"
+                android:hint="Carburant"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/location_boiteV_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_corner"
+                android:backgroundTint="@color/color_button"
+                android:hint="Boîte de vitesse"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/location_prixH_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_corner"
+                android:backgroundTint="@color/color_button"
+                android:hint="Prix horaire"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/location_prixJ_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_corner"
+                android:backgroundTint="@color/color_button"
+                android:hint="Prix journalier"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/location_ville_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_corner"
+                android:backgroundTint="@color/color_button"
+                android:hint="Ville"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/location_statut_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/rounded_corner"
+                android:backgroundTint="@color/color_button"
+                android:hint="Statut"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

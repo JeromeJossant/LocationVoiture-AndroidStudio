@@ -44,7 +44,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mail"
+            android:id="@+id/email_edit_text"
             android:inputType="textEmailAddress"
             android:hint="Veuillez entrer votre adresse mail"
             android:textSize="20sp"
@@ -57,7 +57,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password"
+            android:id="@+id/password_edit_text"
             android:inputType="textPassword"
             android:hint="Veuillez entrer votre mot de passe"
             android:textSize="20sp"

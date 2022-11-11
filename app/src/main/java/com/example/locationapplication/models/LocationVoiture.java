@@ -10,8 +10,8 @@ public class LocationVoiture {
     String place;
     String carburant;
     String boiteVitesse;
-    String prixHoraire;
-    String prixJournalier;
+    Float prixHoraire;
+    Float prixJournalier;
     String ville;
     String statut;
 
@@ -68,19 +68,19 @@ public class LocationVoiture {
         this.boiteVitesse = boiteVitesse;
     }
 
-    public String getPrixHoraire() {
+    public Float getPrixHoraire() {
         return prixHoraire;
     }
 
-    public void setPrixHoraire(String prixHoraire) {
+    public void setPrixHoraire(Float prixHoraire) {
         this.prixHoraire = prixHoraire;
     }
 
-    public String getPrixJournalier() {
+    public Float getPrixJournalier() {
         return prixJournalier;
     }
 
-    public void setPrixJournalier(String prixJournalier) {
+    public void setPrixJournalier(Float prixJournalier) {
         this.prixJournalier = prixJournalier;
     }
 
@@ -100,6 +100,14 @@ public class LocationVoiture {
         this.statut = statut;
     }
 
+    public String floatToStringPrixH(Float prixHoraire) {
+        return String.valueOf(prixHoraire);
+    }
+
+    public String floatToStringPrixJ(Float prixJournalier) {
+        return String.valueOf(prixJournalier);
+    }
+
     public Timestamp getTimestamp() {
         return timestamp;
     }
@@ -107,5 +115,8 @@ public class LocationVoiture {
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
+
+    public String toString(){
+        return "Marque: " + marque + " Modele: " + modele + " Version: " + version + " Place: " + place + " Carburant: " + carburant + " BoiteVitesse: " + boiteVitesse + " PrixHoraire: " + prixHoraire + " PrixJournalier: " + prixJournalier + " Ville: " + ville + " Statut: " + statut;}
 }
 

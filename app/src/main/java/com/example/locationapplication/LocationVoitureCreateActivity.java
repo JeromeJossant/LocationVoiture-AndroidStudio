@@ -1,15 +1,21 @@
 package com.example.locationapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.locationapplication.models.LocationVoiture;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
 
 public class LocationVoitureCreateActivity extends AppCompatActivity {
+
 
     EditText marqueEditText, modeleEditText, versionEditText, placeEditText, carburantEditText, boiteVitesseEditText, prixHoraireEditText, prixJournalierEditText, villeEditText, statutEditText;
     ImageButton saveLocationBtn;
@@ -41,18 +47,18 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         String locationPlace = placeEditText.getText().toString();
         String locationCarburant = carburantEditText.getText().toString();
         String locationBoiteVitesse = boiteVitesseEditText.getText().toString();
-        String locationPrixHoraire = prixHoraireEditText.getText().toString();
-        String locationPrixJournalier = prixJournalierEditText.getText().toString();
+        Float locationPrixHoraire = Float.valueOf(prixHoraireEditText.getText().toString());
+        Float locationPrixJournalier = Float.valueOf(prixJournalierEditText.getText().toString());
         String locationVille = villeEditText.getText().toString();
         String locationStatut = statutEditText.getText().toString();
 
         if (locationMarque == null || locationMarque.isEmpty()) {
             marqueEditText.setError("La marque a besoin d'être rentré");
-            return;
+            return ;
         }
         if (locationModele == null || locationModele.isEmpty()) {
             modeleEditText.setError("Le modèle a besoin d'être rentré");
-            return;
+            return ;
         }
         if (locationVersion == null || locationVersion.isEmpty()) {
             versionEditText.setError("La version a besoin d'être rentré");
@@ -70,11 +76,11 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
             boiteVitesseEditText.setError("La boite de vitesse a besoin d'être rentré");
             return;
         }
-        if (locationPrixHoraire == null || locationPrixHoraire.isEmpty()) {
+        if (locationPrixHoraire == null || locationPrixHoraire.isInfinite()) {
             prixHoraireEditText.setError("Le prix horaire a besoin d'être rentré");
             return;
         }
-        if (locationPrixJournalier == null || locationPrixJournalier.isEmpty()) {
+        if (locationPrixJournalier == null || locationPrixJournalier.isInfinite()) {
             prixJournalierEditText.setError("Le prix journalier a besoin d'être rentré");
             return;
         }
@@ -104,5 +110,19 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
 
     void saveLocationVoitureToFirebase(LocationVoiture locationVoiture){
 
+        DocumentReference documentReference;
+        documentReference = Utility.getCollectionReferenceForLocationVoiture().document();
+
+        documentReference.set(locationVoiture).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                 if (task.isSuccessful()){
+                     Toast.makeText(LocationVoitureCreateActivity.this, "Votre voiture a été ajouté.", Toast.LENGTH_SHORT).show();
+                     finish();
+                 } else {
+                     Toast.makeText(LocationVoitureCreateActivity.this, "Erreur, votre voiture n'a pas été ajouté !", Toast.LENGTH_SHORT).show();
+                 }
+            }
+        });
     }
 }

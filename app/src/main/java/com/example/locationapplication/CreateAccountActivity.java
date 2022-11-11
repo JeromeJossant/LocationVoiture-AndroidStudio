@@ -68,7 +68,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                          if (task.isSuccessful()){
                              //création du compte
                              Toast.makeText(CreateAccountActivity.this, "Votre compte a bien été créé", Toast.LENGTH_SHORT).show();
-                             firebaseAuth.getCurrentUser();
+                             firebaseAuth.getCurrentUser().sendEmailVerification();
                              firebaseAuth.signOut();
                              finish();
                          } else {

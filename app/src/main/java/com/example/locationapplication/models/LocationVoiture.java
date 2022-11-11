@@ -4,13 +4,13 @@ import com.google.firebase.Timestamp;
 
 public class LocationVoiture {
 
-    String marque;
-    String modele;
+    public String marque;
+    public String modele;
     String version;
     String place;
     String carburant;
     String boiteVitesse;
-    Float prixHoraire;
+   public Float prixHoraire;
     Float prixJournalier;
     String ville;
     String statut;
@@ -19,6 +19,7 @@ public class LocationVoiture {
 
     public LocationVoiture() {
     }
+
 
     public String getMarque() {
         return marque;

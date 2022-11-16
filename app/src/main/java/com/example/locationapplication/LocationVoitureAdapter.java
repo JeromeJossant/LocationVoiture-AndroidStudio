@@ -1,9 +1,11 @@
 package com.example.locationapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,8 +29,16 @@ public class LocationVoitureAdapter extends FirestoreRecyclerAdapter<LocationVoi
 
         holder.marqueTextView.setText(locationVoiture.marque);
         holder.modelTextView.setText(locationVoiture.modele);
-        holder.prixHoraireTextView.setText( " Prix Horaire : "+ locationVoiture.prixHoraire + "euros");
+        holder.prixHoraireTextView.setText( " Prix Horaire : "+ locationVoiture.prixHoraire + " euros");
         holder.timestampTextView.setText(Utility.timestampToString(locationVoiture.getTimestamp()));
+
+        holder.itemView.setOnClickListener((v) -> {
+            Intent intent = new Intent(context, LocationVoitureDetailsActivity.class);
+
+            String docId = getSnapshots().getSnapshot(position).getId();
+            intent.putExtra("docId", docId);
+            context.startActivity(intent);
+        });
     }
 
     @NonNull
@@ -52,5 +62,6 @@ public class LocationVoitureAdapter extends FirestoreRecyclerAdapter<LocationVoi
 
         }
     }
+
 
 }

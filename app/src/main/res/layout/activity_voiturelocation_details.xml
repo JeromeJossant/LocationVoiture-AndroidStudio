@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/my_color"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_bar_layout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/page_title"
+            android:text="Location disponible"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_marginVertical="10dp"
+        android:backgroundTint="@color/teal_700"
+        android:layout_below="@id/title_bar_layout"
+        android:background="@drawable/rounded_corner"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="marque"
+            android:id="@+id/marque_details_text_view"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="modèle"
+            android:id="@+id/model_details_text_view"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+
+        <TextView  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="version"
+            android:id="@+id/version_details_text_view"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="place"
+            android:id="@+id/place_details_text_view"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="carburant"
+            android:id="@+id/carburant_details_text_view"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="boite de vitesse"
+            android:id="@+id/boiteVitesse_details_text_view"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/prixHoraire_details_text_view"
+            android:text="prix horaire"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/prixJournalier_details_text_view"
+            android:text="prix journalier"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ville"
+            android:id="@+id/ville_details_text_view"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="statut"
+            android:id="@+id/statut_details_text_view"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="timestamp"
+            android:id="@+id/locationVoiture_timestamp_details_text_view"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginVertical="4dp"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

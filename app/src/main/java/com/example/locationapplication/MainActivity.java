@@ -15,6 +15,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.auth.FirebaseAppCheckTokenProvider;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         menuBtn = findViewById(R.id.menu_btn);
         recyclerView = findViewById(R.id.recyler_view);
 
+
         addLocationBtn.setOnClickListener((v) -> startActivity( new Intent(MainActivity.this, LocationVoitureCreateActivity.class)) );
         menuBtn.setOnClickListener((v) ->showMenu() );
         setupRecyclerView();
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     void showMenu(){
         PopupMenu popupMenu = new PopupMenu(MainActivity.this, menuBtn);
+        popupMenu.getMenu().add("Profil");
         popupMenu.getMenu().add("Se déconcecter");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginVertical="16dp"
     android:layout_marginHorizontal="32dp"
     tools:context=".CreateAccountActivity">
 
@@ -39,6 +38,34 @@
         android:id="@+id/form_create"
         android:layout_marginVertical="32dp"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="168dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/nom_edit_text"
+                android:hint="Nom"
+                android:textSize="20sp"
+                android:background="@drawable/rounded_corner"
+                android:padding="16dp"
+                android:layout_marginTop="8dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/prenom_edit_text"
+                android:inputType="textPersonName"
+                android:hint="Prénom"
+                android:textSize="20sp"
+                android:background="@drawable/rounded_corner"
+                android:padding="16dp"
+                android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
 
         <EditText
             android:layout_width="match_parent"
@@ -80,12 +107,12 @@
         </EditText>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/create_account_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="créer compte"
-            android:id="@+id/create_account_btn"
-            android:layout_marginTop="12dp"
             android:layout_marginVertical="12dp"
+            android:layout_marginTop="12dp"
+            android:text="créer compte"
             android:textSize="16sp">
 
         </com.google.android.material.button.MaterialButton>
@@ -101,22 +128,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_below="@+id/form_create"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_below="@+id/form_create"
+        android:layout_marginTop="-20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vous avez déjà un compte ? "/>
+            android:text="Vous avez déjà un compte ? " />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:id="@+id/login_text_view_btn"
-            android:text="Connexion"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Connexion"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

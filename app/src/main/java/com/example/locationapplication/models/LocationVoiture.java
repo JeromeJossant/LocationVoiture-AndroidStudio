@@ -6,20 +6,35 @@ public class LocationVoiture {
 
     public String marque;
     public String modele;
-    String version;
-    String place;
-    String carburant;
-    String boiteVitesse;
-   public Float prixHoraire;
-    Float prixJournalier;
-    String ville;
-    String statut;
+    public String version;
+    public String place;
+    public String carburant;
+    public String boiteVitesse;
+    public Float prixHoraire;
+    public Float prixJournalier;
+    public String ville;
+    public String statut;
 
+    String userId;
     Timestamp timestamp;
 
     public LocationVoiture() {
     }
 
+    public LocationVoiture(String marque, String modele, String version, String place, String carburant, String boiteVitesse, Float prixHoraire, Float prixJournalier, String ville, String statut, String userId, Timestamp timestamp) {
+        this.marque = marque;
+        this.modele = modele;
+        this.version = version;
+        this.place = place;
+        this.carburant = carburant;
+        this.boiteVitesse = boiteVitesse;
+        this.prixHoraire = prixHoraire;
+        this.prixJournalier = prixJournalier;
+        this.ville = ville;
+        this.statut = statut;
+        this.userId = userId;
+        this.timestamp = timestamp;
+    }
 
     public String getMarque() {
         return marque;
@@ -117,7 +132,32 @@ public class LocationVoiture {
         this.timestamp = timestamp;
     }
 
-    public String toString(){
-        return "Marque: " + marque + " Modele: " + modele + " Version: " + version + " Place: " + place + " Carburant: " + carburant + " BoiteVitesse: " + boiteVitesse + " PrixHoraire: " + prixHoraire + " PrixJournalier: " + prixJournalier + " Ville: " + ville + " Statut: " + statut;}
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "LocationVoiture{" +
+                "marque='" + marque + '\'' +
+                ", modele='" + modele + '\'' +
+                ", version='" + version + '\'' +
+                ", place='" + place + '\'' +
+                ", carburant='" + carburant + '\'' +
+                ", boiteVitesse='" + boiteVitesse + '\'' +
+                ", prixHoraire=" + prixHoraire +
+                ", prixJournalier=" + prixJournalier +
+                ", ville='" + ville + '\'' +
+                ", statut='" + statut + '\'' +
+                ", userId='" + userId + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
+
+
 

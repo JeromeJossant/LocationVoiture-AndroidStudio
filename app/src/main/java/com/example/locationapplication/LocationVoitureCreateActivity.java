@@ -12,6 +12,8 @@ import com.example.locationapplication.models.LocationVoiture;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 
 public class LocationVoitureCreateActivity extends AppCompatActivity {
@@ -19,6 +21,10 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
 
     EditText marqueEditText, modeleEditText, versionEditText, placeEditText, carburantEditText, boiteVitesseEditText, prixHoraireEditText, prixJournalierEditText, villeEditText, statutEditText;
     ImageButton saveLocationBtn;
+
+    String marque, modele, place, carburant, boiteVitesse, ville, statut, docId;
+    Float prixHoraire, prixJournalier;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +43,29 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         saveLocationBtn = findViewById(R.id.save_location_btn);
 
 
+        //recevoir les données
+        marque = getIntent().getStringExtra("marque");
+        modele = getIntent().getStringExtra("modele");
+        place = getIntent().getStringExtra("place");
+        carburant = getIntent().getStringExtra("carburant");
+        boiteVitesse = getIntent().getStringExtra("boiteVitesse");
+        ville = getIntent().getStringExtra("ville");
+        statut = getIntent().getStringExtra("statut");
+        prixHoraire = getIntent().getFloatExtra("prixHoraire", 0);
+        prixJournalier = getIntent().getFloatExtra("prixJournalier", 0);
+        docId = getIntent().getStringExtra("docId");
+
+        marqueEditText.setText(marque);
+        modeleEditText.setText(modele);
+        placeEditText.setText(place);
+        carburantEditText.setText(carburant);
+        boiteVitesseEditText.setText(boiteVitesse);
+        villeEditText.setText(ville);
+        statutEditText.setText(statut);
+        prixHoraireEditText.setText(String.valueOf(prixHoraire));
+        prixJournalierEditText.setText(String.valueOf(prixJournalier));
+
+
         saveLocationBtn.setOnClickListener( (v) -> saveLocation());
     }
 
@@ -52,46 +81,12 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         String locationVille = villeEditText.getText().toString();
         String locationStatut = statutEditText.getText().toString();
 
-        if (locationMarque == null || locationMarque.isEmpty()) {
-            marqueEditText.setError("La marque a besoin d'être rentré");
-            return ;
-        }
-        if (locationModele == null || locationModele.isEmpty()) {
-            modeleEditText.setError("Le modèle a besoin d'être rentré");
-            return ;
-        }
-        if (locationVersion == null || locationVersion.isEmpty()) {
-            versionEditText.setError("La version a besoin d'être rentré");
+        boolean isValidateData = validateData(locationMarque, locationModele, locationVersion, locationPlace, locationCarburant, locationBoiteVitesse, locationPrixHoraire, locationPrixJournalier, locationVille, locationStatut);
+        if (!isValidateData){
             return;
         }
-        if (locationPlace == null || locationPlace.isEmpty()) {
-            placeEditText.setError("Le nombre de place a besoin d'être rentré");
-            return;
-        }
-        if (locationCarburant == null || locationCarburant.isEmpty()) {
-            carburantEditText.setError("Le carburant a besoin d'être rentré");
-            return;
-        }
-        if (locationBoiteVitesse == null || locationBoiteVitesse.isEmpty()) {
-            boiteVitesseEditText.setError("La boite de vitesse a besoin d'être rentré");
-            return;
-        }
-        if (locationPrixHoraire == null || locationPrixHoraire.isInfinite()) {
-            prixHoraireEditText.setError("Le prix horaire a besoin d'être rentré");
-            return;
-        }
-        if (locationPrixJournalier == null || locationPrixJournalier.isInfinite()) {
-            prixJournalierEditText.setError("Le prix journalier a besoin d'être rentré");
-            return;
-        }
-        if (locationVille == null || locationVille.isEmpty()) {
-            villeEditText.setError("La ville a besoin d'être rentré");
-            return;
-        }
-        if (locationStatut == null || locationStatut.isEmpty()) {
-            statutEditText.setError("Le statut a besoin d'être rentré");
-            return;
-        }
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         LocationVoiture locationVoiture = new LocationVoiture();
         locationVoiture.setMarque(locationMarque);
@@ -105,7 +100,53 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         locationVoiture.setVille(locationVille);
         locationVoiture.setStatut(locationStatut);
         locationVoiture.setTimestamp(Timestamp.now());
+        locationVoiture.setUserId(currentUser.getUid());
         saveLocationVoitureToFirebase(locationVoiture);
+    }
+
+    boolean validateData(String locationMarque, String locationModele, String locationVersion, String locationPlace, String locationCarburant, String locationBoiteVitesse, Float locationPrixHoraire, Float locationPrixJournalier, String locationVille, String locationStatut) {
+
+        if (locationMarque == null || locationMarque.isEmpty()) {
+            marqueEditText.setError("La marque a besoin d'être rentré");
+            return false;
+        }
+        if (locationModele == null || locationModele.isEmpty()) {
+            modeleEditText.setError("Le modèle a besoin d'être rentré");
+            return false;
+        }
+        if (locationVersion == null || locationVersion.isEmpty()) {
+            versionEditText.setError("La version a besoin d'être rentré");
+            return false;
+        }
+        if (locationPlace == null || locationPlace.isEmpty()) {
+            placeEditText.setError("Le nombre de place a besoin d'être rentré");
+            return false;
+        }
+        if (locationCarburant == null || locationCarburant.isEmpty()) {
+            carburantEditText.setError("Le carburant a besoin d'être rentré");
+            return false;
+        }
+        if (locationBoiteVitesse == null || locationBoiteVitesse.isEmpty()) {
+            boiteVitesseEditText.setError("La boite de vitesse a besoin d'être rentré");
+            return false;
+        }
+        if (locationPrixHoraire == null || locationPrixHoraire.isInfinite()) {
+            prixHoraireEditText.setError("Le prix horaire a besoin d'être rentré");
+            return false;
+        }
+        if (locationPrixJournalier == null || locationPrixJournalier.isInfinite()) {
+            prixJournalierEditText.setError("Le prix journalier a besoin d'être rentré");
+            return false;
+        }
+        if (locationVille == null || locationVille.isEmpty()) {
+            villeEditText.setError("La ville a besoin d'être rentré");
+            return false;
+        }
+        if (locationStatut == null || locationStatut.isEmpty()) {
+            statutEditText.setError("Le statut a besoin d'être rentré");
+            return false;
+        }
+        return true;
     }
 
     void saveLocationVoitureToFirebase(LocationVoiture locationVoiture){

@@ -22,6 +22,9 @@
             android:name=".CreateAccountActivity"
             android:exported="false" />
         <activity
+            android:name=".LocationVoitureDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>

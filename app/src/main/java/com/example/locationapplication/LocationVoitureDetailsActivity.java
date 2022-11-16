@@ -51,7 +51,6 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
 
         if (firebaseAuth.getCurrentUser() != null) {
             docId = getIntent().getStringExtra("docId");
-            Toast.makeText(this, "User is logged in", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Vous n'avez pas accès", Toast.LENGTH_SHORT).show();
         }
@@ -74,7 +73,6 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
                         statut = documentSnapshot.getString("statut");
                         dateTimestamp = documentSnapshot.getTimestamp("timestamp");
 
-                        Toast.makeText(LocationVoitureDetailsActivity.this, "Data is OKAY2", Toast.LENGTH_SHORT).show();
                         marqueTextView.setText(marque);
                         modeleTextView.setText(modele);
                         versionTextView.setText(version);
@@ -86,7 +84,6 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
                         villeTextView.setText(ville);
                         statutTextView.setText(statut);
                         dateTimestampTextView.setText(Utility.timestampToString(dateTimestamp));
-                        Toast.makeText(LocationVoitureDetailsActivity.this, "Data is okay3333", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(LocationVoitureDetailsActivity.this, "Document does not exist", Toast.LENGTH_SHORT).show();
                     }

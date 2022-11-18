@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
+                } if (menuItem.getTitle() == "Profil") {
+                    startActivity(new Intent(MainActivity.this, ProfilActivity.class));
                 }
                 return false;
             }

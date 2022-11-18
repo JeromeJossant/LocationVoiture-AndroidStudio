@@ -2,8 +2,12 @@ package com.example.locationapplication;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +31,8 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
     String marque, modele, version, place, boiteVitesse, carburant, ville, statut, docId;
     Float prixHoraire, prixJournalier;
     Timestamp dateTimestamp;
+    ImageButton backBtn;
+    LinearLayout reservationLayout;
 
 
 
@@ -45,9 +51,21 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
         boiteVitesseTextView = findViewById(R.id.boiteVitesse_details_text_view);
         villeTextView = findViewById(R.id.ville_details_text_view);
         statutTextView = findViewById(R.id.statut_details_text_view);
+        reservationLayout = findViewById(R.id.reserver_btn);
+        backBtn = findViewById(R.id.back_btn);
+
+        backBtn.setOnClickListener((v) -> {
+            startActivity(new Intent(LocationVoitureDetailsActivity.this, MainActivity.class));
+        });
+
+        reservationLayout.setOnClickListener(v -> {
+            startActivity(new Intent(LocationVoitureDetailsActivity.this, ReservationActivity.class));
+            Toast.makeText(LocationVoitureDetailsActivity.this, "Réservation en cours...", Toast.LENGTH_SHORT).show();
+        });
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+
 
         if (firebaseAuth.getCurrentUser() != null) {
             docId = getIntent().getStringExtra("docId");

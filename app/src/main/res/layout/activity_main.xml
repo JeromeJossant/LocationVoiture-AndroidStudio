@@ -19,7 +19,7 @@
             android:id="@+id/page_title"
             android:text="Location disponible"
             android:textColor="@color/white"
-            android:textSize="32dp"
+            android:textSize="30dp"
             android:textStyle="bold"/>
         <ImageButton
             android:layout_width="36dp"

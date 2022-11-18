@@ -7,8 +7,34 @@
     android:background="@color/my_color"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_bar_layout">
 
-    <TextView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/page_title"
+            android:text="Réservation"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:textSize="32dp"
+            android:textStyle="bold"/>
+        <ImageButton
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/menu_btn"
+            android:src="@drawable/ic_baseline_menu_24"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/white">
+
+        </ImageButton>
+
+    </RelativeLayout>
+<!--    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@android:id/accessibilityActionContextClick"
@@ -16,11 +42,9 @@
         android:layout_alignParentBottom="false"
         android:layout_marginTop="5dp"
         android:layout_marginRight="8dp"
-        android:text="Déconnexion"
+        android:text="Réservation"
         android:textColor="@color/white"
-        android:textSize="25dp"
-
-        />
+        android:textSize="25dp" />-->
 
     <TextView
         android:id="@+id/TitreReservation"
@@ -34,22 +58,8 @@
         android:text="CITROEN C3 2016 1.2 PURETECH 110 S_et_S 6CV SHINE BV6"
         android:textColor="@color/white"
         android:textSize="17sp"
-        android:textStyle="bold"
+        android:textStyle="bold" />
 
-
-        />
-
-    <TextView
-        android:id="@+id/TxtNumRes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="160dp"
-        android:text="Numéro de réservation :"
-        android:textSize="17dp"
-
-
-        />
 
     <TextView
         android:id="@+id/txtNumRes"
@@ -71,9 +81,7 @@
         android:backgroundTint="@color/color_button"
         android:ems="10"
         android:text="  ........................................"
-        android:textColor="@color/white"
-
-        />
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/txtDateRes"
@@ -83,9 +91,7 @@
         android:layout_marginTop="240dp"
         android:text="Date de réservation :"
         android:textColor="@color/white"
-        android:textSize="17dp"
-
-        />
+        android:textSize="17dp"/>
 
     <TextView
         android:id="@+id/Affiche_DateRes"
@@ -98,9 +104,7 @@
         android:ems="10"
         android:text="  jj/mm/aaaa"
         android:textColor="@color/white"
-        android:textSize="18dp"
-
-        />
+        android:textSize="18dp"/>
 
     <TextView
         android:id="@+id/txtDureeRes"
@@ -110,9 +114,7 @@
         android:layout_marginTop="320dp"
         android:text="Date de réservation :"
         android:textColor="@color/white"
-        android:textSize="17dp"
-
-        />
+        android:textSize="17dp"/>
 
     <EditText
         android:id="@+id/input_DebutRes"
@@ -125,10 +127,7 @@
         android:ems="10"
         android:inputType="date"
         android:text="  Du jj/mm/aaaa"
-        android:textColor="@color/white"
-
-
-        />
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/input_FinRes"
@@ -141,9 +140,7 @@
         android:ems="10"
         android:inputType="date"
         android:text="  Au jj/mm/aaaa"
-        android:textColor="@color/white"
-
-        />
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/txtNbJrRes"
@@ -179,7 +176,7 @@
         android:backgroundTint="@color/color_button"
         android:text="  ............. euros :"
         android:textColor="@color/white"
-        android:textSize="18dp" />
+        android:textSize="18dp"/>
 
     <Button
         android:id="@+id/button"
@@ -190,16 +187,7 @@
         android:backgroundTint="@color/color_button"
         android:gravity="center"
         android:text="Button"
-        android:textSize="20dp"
-
-
-        />
-
-
-    />
-
-
-    />
+        android:textSize="20dp" />
 
 
 </RelativeLayout>

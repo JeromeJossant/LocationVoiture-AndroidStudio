@@ -39,40 +39,42 @@
         android:layout_marginVertical="32dp"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <EditText
-                android:layout_width="168dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/nom_edit_text"
-                android:hint="Nom"
-                android:textSize="20sp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_corner"
+                android:hint="Nom"
                 android:padding="16dp"
-                android:layout_marginTop="8dp"/>
+                android:textSize="20sp" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/prenom_edit_text"
                 android:inputType="textPersonName"
+                android:layout_toRightOf="@+id/nom_edit_text"
                 android:hint="Prénom"
                 android:textSize="20sp"
                 android:background="@drawable/rounded_corner"
                 android:padding="16dp"
                 android:layout_marginTop="8dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/email_edit_text"
             android:inputType="textEmailAddress"
-            android:hint="Veuillez entrer votre adresse mail"
+            android:hint="Veuillez entrer votre mail"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"
@@ -85,7 +87,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/password_edit_text"
             android:inputType="textPassword"
-            android:hint="Veuillez entrer votre mot de passe"
+            android:hint="Mot de passe"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"
@@ -98,7 +100,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/confirm_password_edit_text"
             android:inputType="textPassword"
-            android:hint="Confirmation votre mot de passe"
+            android:hint="Confirmation du mot de passe"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"

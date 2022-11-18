@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/email_edit_text"
             android:inputType="textEmailAddress"
-            android:hint="Veuillez entrer votre adresse mail"
+            android:hint="Veuillez entrer votre mail"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/password_edit_text"
             android:inputType="textPassword"
-            android:hint="Veuillez entrer votre mot de passe"
+            android:hint="Mot de passe"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"
@@ -97,6 +97,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="13sp"
             android:text="Vous n'avez pas de compte ? "/>
 
         <TextView
@@ -104,6 +105,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:id="@+id/create_account_text_view_btn"
+            android:textSize="13sp"
             android:text="Créer votre compte"/>
 
     </LinearLayout>

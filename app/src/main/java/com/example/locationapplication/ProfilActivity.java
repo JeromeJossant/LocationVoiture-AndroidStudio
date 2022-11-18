@@ -1,7 +1,9 @@
 package com.example.locationapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,10 +21,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class ProfilActivity extends AppCompatActivity {
 
     TextView nomTextView, prenomTextView, emailTextView;
-    Button backBtn;
+    Button backAnnonceBtn;
     FirebaseFirestore firebaseFirestore;
     FirebaseUser currentUser;
     String nom, prenom, email;
+    ImageButton backBtn;
     FirebaseAuth firebaseAuth;
 
     @Override
@@ -32,12 +35,16 @@ public class ProfilActivity extends AppCompatActivity {
         nomTextView = findViewById(R.id.nom_profil_text_view);
         prenomTextView = findViewById(R.id.prenom_profil_text_view);
         emailTextView = findViewById(R.id.email_profil_text_view);
+        backAnnonceBtn = findViewById(R.id.back_annonce_btn);
         backBtn = findViewById(R.id.back_btn);
-
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
 
-        backBtn.setOnClickListener(v -> finish());
+        backAnnonceBtn.setOnClickListener(v -> finish());
+
+        backBtn.setOnClickListener((v) -> {
+            startActivity(new Intent(ProfilActivity.this, MainActivity.class));
+        });
 
         if (firebaseAuth.getCurrentUser() != null) {
             currentUser = firebaseAuth.getCurrentUser();

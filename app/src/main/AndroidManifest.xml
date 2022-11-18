@@ -28,6 +28,9 @@
             android:name=".ProfilActivity"
             android:exported="false" />
         <activity
+            android:name=".ReservationActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>

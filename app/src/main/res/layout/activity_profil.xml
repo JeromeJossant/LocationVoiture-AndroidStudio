@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="@color/my_color"
     android:padding="16dp"
     tools:context=".ProfilActivity">
@@ -249,6 +250,116 @@
     </com.google.android.material.button.MaterialButton>
 
 
+=======
+    tools:context=".activity_profil"
+    tools:ignore="ExtraText"
+    android:background="@color/my_color"
+    >
+
+    <!-- this is a comment -->
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="Profil"
+        android:textColor="@color/white"
+        android:textSize="19dp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:id="@+id/txtNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="80dp"
+        android:text="nom :"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txt_AfficheNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="80dp"
+        android:text="Doe"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+
+
+        />
+
+    <TextView
+        android:id="@+id/txtPrenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="120dp"
+        android:text="prenom :"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txt_AffichePrenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="120dp"
+        android:text="John"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="160dp"
+        android:text="Email :"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txt_AfficheEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="160dp"
+        android:text="johndoe@gmail.com"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txtLocationEnCours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="230dp"
+        android:gravity="center"
+        android:text="Location en cours"
+        android:textColor="@color/white"
+        android:textSize="19dp"
+        android:textStyle="bold"
+
+        />
+>>>>>>> origin/main
 
 
 </RelativeLayout>

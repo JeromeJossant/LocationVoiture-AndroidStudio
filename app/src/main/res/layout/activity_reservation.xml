@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/my_color"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@android:id/accessibilityActionContextClick"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="8dp"
+        android:text="Déconnexion"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+
+        />
+
+    <TextView
+        android:id="@+id/TitreReservation"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/color_button"
+        android:gravity="center"
+        android:text="CITROEN C3 2016 1.2 PURETECH 110 S_et_S 6CV SHINE BV6"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
+
+
+        />
+
+    <TextView
+        android:id="@+id/TxtNumRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="160dp"
+        android:text="Numéro de réservation :"
+        android:textSize="17dp"
+
+
+        />
+
+    <TextView
+        android:id="@+id/txtNumRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="160dp"
+        android:text="Numéro de réservation :"
+        android:textColor="@color/white"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/editTextTextPersonName6"
+        android:layout_width="300dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="190dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/color_button"
+        android:ems="10"
+        android:text="  ........................................"
+        android:textColor="@color/white"
+
+        />
+
+    <TextView
+        android:id="@+id/txtDateRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="240dp"
+        android:text="Date de réservation :"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+
+        />
+
+    <TextView
+        android:id="@+id/Affiche_DateRes"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="270dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/color_button"
+        android:ems="10"
+        android:text="  jj/mm/aaaa"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txtDureeRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="320dp"
+        android:text="Date de réservation :"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+
+        />
+
+    <EditText
+        android:id="@+id/input_DebutRes"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/color_button"
+        android:ems="10"
+        android:inputType="date"
+        android:text="  Du jj/mm/aaaa"
+        android:textColor="@color/white"
+
+
+        />
+
+    <EditText
+        android:id="@+id/input_FinRes"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="390dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/color_button"
+        android:ems="10"
+        android:inputType="date"
+        android:text="  Au jj/mm/aaaa"
+        android:textColor="@color/white"
+
+        />
+
+    <TextView
+        android:id="@+id/txtNbJrRes"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="430dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/color_button"
+        android:text="  Soit .... Jours :"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/txtCoutRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="490dp"
+        android:text="Coût de réservation :"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txtAffichage_CoutRes"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="520dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@color/color_button"
+        android:text="  ............. euros :"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="600dp"
+        android:backgroundTint="@color/color_button"
+        android:gravity="center"
+        android:text="Button"
+        android:textSize="20dp"
+
+
+        />
+
+
+    />
+
+
+    />
+
+
+</RelativeLayout>

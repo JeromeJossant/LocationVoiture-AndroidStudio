@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LocationApplication">
         <activity
-            android:name=".ProfilActivity"
-            android:exported="false" />
-        <activity
             android:name=".LocationVoitureCreateActivity"
             android:exported="false" />
         <activity
@@ -26,6 +23,9 @@
             android:exported="false" />
         <activity
             android:name=".LocationVoitureDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfilActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"

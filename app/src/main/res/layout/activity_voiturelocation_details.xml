@@ -44,7 +44,7 @@
         android:background="@drawable/rounded_corner"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -54,20 +54,22 @@
                 android:layout_height="wrap_content"
                 android:text="Marque :"
                 android:textColor="@color/white"
+                android:id="@+id/marque_details_txt"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="marque"
+                android:layout_toRightOf="@+id/marque_details_txt"
                 android:id="@+id/marque_details_text_view"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -77,6 +79,7 @@
                 android:layout_height="wrap_content"
                 android:text="modèle :"
                 android:textColor="@color/white"
+                android:id="@+id/model_details_txt"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
             <TextView
@@ -84,13 +87,14 @@
                 android:layout_height="wrap_content"
                 android:text="modèle"
                 android:id="@+id/model_details_text_view"
+                android:layout_toRightOf="@+id/model_details_txt"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -99,28 +103,24 @@
                 android:layout_height="wrap_content"
                 android:text="version :"
                 android:textColor="@color/white"
+                android:id="@+id/version_details_txt"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
+
             <TextView  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="version"
                 android:id="@+id/version_details_text_view"
                 android:textColor="@color/white"
+                android:layout_toRightOf="@+id/version_details_txt"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        </RelativeLayout>
 
 
-        </LinearLayout>
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -130,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:text="carburant :"
                 android:textColor="@color/white"
+                android:id="@+id/carburant_details_txt"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
@@ -138,13 +139,14 @@
                 android:layout_height="wrap_content"
                 android:text="carburant"
                 android:id="@+id/carburant_details_text_view"
+                android:layout_toRightOf="@+id/carburant_details_txt"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -154,6 +156,7 @@
                 android:layout_height="wrap_content"
                 android:text="place :"
                 android:textColor="@color/white"
+                android:id="@+id/place_details_txt"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
@@ -162,13 +165,14 @@
                 android:layout_height="wrap_content"
                 android:text="place "
                 android:id="@+id/place_details_text_view"
+                android:layout_toRightOf="@+id/place_details_txt"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -178,6 +182,7 @@
                 android:layout_height="wrap_content"
                 android:text="boite de vitesse :"
                 android:textColor="@color/white"
+                android:id="@+id/boiteVitesse_details_text_view_details_txt"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
@@ -186,13 +191,14 @@
                 android:layout_height="wrap_content"
                 android:text="boite de vitesse"
                 android:id="@+id/boiteVitesse_details_text_view"
+                android:layout_toRightOf="@+id/boiteVitesse_details_text_view_details_txt"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -202,6 +208,7 @@
                 android:layout_height="wrap_content"
                 android:text="prix horaire :"
                 android:textColor="@color/white"
+                android:id="@+id/prixHoraire_details_txt"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
@@ -209,14 +216,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/prixHoraire_details_text_view"
+                android:layout_toRightOf="@+id/prixHoraire_details_txt"
                 android:text="prix horaire"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -226,6 +234,7 @@
                 android:layout_height="wrap_content"
                 android:text="prix journalier :"
                 android:textColor="@color/white"
+                android:id="@+id/prixJournalier_details_txt"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
@@ -234,13 +243,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/prixJournalier_details_text_view"
                 android:text="prix journalier"
+                android:layout_toRightOf="@+id/prixJournalier_details_txt"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -250,6 +260,7 @@
                 android:layout_height="wrap_content"
                 android:text="ville :"
                 android:textColor="@color/white"
+                android:id="@+id/ville_details_txt"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
@@ -259,13 +270,14 @@
                 android:layout_height="wrap_content"
                 android:text="ville"
                 android:id="@+id/ville_details_text_view"
+                android:layout_toRightOf="@+id/ville_details_txt"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -275,6 +287,7 @@
                 android:layout_height="wrap_content"
                 android:text="statut :"
                 android:textColor="@color/white"
+                android:id="@+id/statut_details_txt"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
@@ -283,13 +296,14 @@
                 android:layout_height="wrap_content"
                 android:text="statut"
                 android:id="@+id/statut_details_text_view"
+                android:layout_toRightOf="@+id/statut_details_txt"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -298,6 +312,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="Publié le :"
+                android:id="@+id/timestamp_details_txt"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
@@ -307,11 +322,12 @@
                 android:layout_height="wrap_content"
                 android:text="timestamp"
                 android:id="@+id/locationVoiture_timestamp_details_text_view"
+                android:layout_toRightOf="@+id/timestamp_details_txt"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:layout_marginVertical="4dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
 
@@ -333,6 +349,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Réserver"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>

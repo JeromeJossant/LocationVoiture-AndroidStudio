@@ -20,7 +20,7 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
 
 
     EditText marqueEditText, modeleEditText, versionEditText, placeEditText, carburantEditText, boiteVitesseEditText, prixHoraireEditText, prixJournalierEditText, villeEditText, statutEditText;
-    ImageButton saveLocationBtn;
+    ImageButton saveLocationBtn, backBtn;
 
     String marque, modele, place, carburant, boiteVitesse, ville, statut, docId;
     Float prixHoraire, prixJournalier;
@@ -41,6 +41,7 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         villeEditText = findViewById(R.id.location_ville_text);
         statutEditText = findViewById(R.id.location_statut_text);
         saveLocationBtn = findViewById(R.id.save_location_btn);
+        backBtn = findViewById(R.id.back_btn);
 
 
         //recevoir les données
@@ -67,6 +68,7 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
 
 
         saveLocationBtn.setOnClickListener( (v) -> saveLocation());
+        backBtn.setOnClickListener( (v) -> finish());
     }
 
     void saveLocation() {

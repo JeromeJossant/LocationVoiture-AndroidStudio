@@ -1,9 +1,11 @@
 package com.example.locationapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,6 +14,7 @@ import android.widget.PopupMenu;
 
 import com.example.locationapplication.models.LocationVoiture;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton addLocationBtn;
     ImageButton menuBtn;
     RecyclerView recyclerView;
+    BottomNavigationView bottomNavigationView;
     LocationVoitureAdapter locationVoitureAdapter;
 
     @Override
@@ -32,6 +36,30 @@ public class MainActivity extends AppCompatActivity {
         addLocationBtn = findViewById(R.id.add_location_btn);
         menuBtn = findViewById(R.id.menu_btn);
         recyclerView = findViewById(R.id.recyler_view);
+        bottomNavigationView = findViewById(R.id.bottom_navigation_view);
+
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        return true;
+                    case R.id.search:
+                        startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.contact:
+                        startActivity(new Intent(getApplicationContext(), ContactActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
 
         addLocationBtn.setOnClickListener((v) -> startActivity( new Intent(MainActivity.this, LocationVoitureCreateActivity.class)) );

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/my_color"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -12,182 +13,242 @@
         android:layout_height="wrap_content"
         android:id="@+id/title_bar_layout">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/page_title"
-            android:text="Réservation"
-            android:textColor="@color/white"
-            android:layout_centerInParent="true"
-            android:textSize="32dp"
-            android:textStyle="bold"/>
         <ImageButton
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:id="@+id/menu_btn"
-            android:src="@drawable/ic_baseline_menu_24"
-            android:layout_alignParentEnd="true"
+            android:background="@color/my_color"
             android:layout_centerVertical="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/white">
+            android:layout_alignParentStart="true"
+            android:id="@+id/back_btn"
+            android:src="@drawable/ic_baseline_arrow_back_24"/>
 
-        </ImageButton>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title_profil"
+            android:layout_centerInParent="true"
+            android:text="Réservation"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
 
     </RelativeLayout>
-<!--    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@android:id/accessibilityActionContextClick"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="false"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="8dp"
-        android:text="Réservation"
-        android:textColor="@color/white"
-        android:textSize="25dp" />-->
+        android:layout_below="@+id/title_bar_layout"
+        android:id="@+id/form_login"
+        android:layout_marginVertical="32dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/TitreReservation"
-        android:layout_width="400dp"
+        <TextView
+            android:id="@+id/marque_model_version_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/color_button"
+            android:gravity="center"
+            android:text="CITROEN C3 "
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDateRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date début de réservation :"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
+            android:textSize="17dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/color_button"
+            android:id="@+id/date_debut_text_view"
+            android:hint="Date début"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="20sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtDateFin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date de fin de réservation :"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
+            android:textSize="17dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/color_button"
+            android:id="@+id/date_fin_text_view"
+            android:hint="date fin"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/txtCout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coût de la réservation :"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
+            android:textSize="17dp"/>
+
+        <TextView
+            android:id="@+id/cout_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/color_button"
+            android:hint="Séléctionner une date "
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Valider"
+            android:id="@+id/valider_btn"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="@color/color_button"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textSize="15sp">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <ProgressBar
+            android:layout_width="24dp"
+            android:layout_height="64dp"
+            android:id="@+id/progress_bar"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="12dp"/>
+    </LinearLayout>
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="70dp"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/color_button"
-        android:gravity="center"
-        android:text="CITROEN C3 2016 1.2 PURETECH 110 S_et_S 6CV SHINE BV6"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        android:textStyle="bold" />
+        android:layout_marginHorizontal="12dp"
+        android:layout_below="@+id/title_bar_layout"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/marque_model_version_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/color_button"
+            android:gravity="center"
+            android:text="CITROEN C3 "
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
 
-    <TextView
-        android:id="@+id/txtNumRes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="160dp"
-        android:text="Numéro de réservation :"
-        android:textColor="@color/white"
-        android:textSize="17dp" />
+        <TextView
+            android:id="@+id/txtDateRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date de réservation :"
+            android:textColor="@color/white"
+            android:textSize="17dp"/>
 
-    <TextView
-        android:id="@+id/editTextTextPersonName6"
-        android:layout_width="300dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="190dp"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/color_button"
-        android:ems="10"
-        android:text="  ........................................"
-        android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/Affiche_DateRes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/color_button"
+            android:text="  jj/mm/aaaa"
+            android:textColor="@color/white"
+            android:textSize="18dp"/>
 
-    <TextView
-        android:id="@+id/txtDateRes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="240dp"
-        android:text="Date de réservation :"
-        android:textColor="@color/white"
-        android:textSize="17dp"/>
+        <TextView
+            android:id="@+id/txtDureeRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date de réservation :"
+            android:textColor="@color/white"
+            android:textSize="17dp"/>
 
-    <TextView
-        android:id="@+id/Affiche_DateRes"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="270dp"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/color_button"
-        android:ems="10"
-        android:text="  jj/mm/aaaa"
-        android:textColor="@color/white"
-        android:textSize="18dp"/>
+        <EditText
+            android:id="@+id/input_DebutRes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/color_button"
+            android:inputType="date"
+            android:text="  Du jj/mm/aaaa"
+            android:textColor="@color/white"/>
 
-    <TextView
-        android:id="@+id/txtDureeRes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="320dp"
-        android:text="Date de réservation :"
-        android:textColor="@color/white"
-        android:textSize="17dp"/>
+        <EditText
+            android:id="@+id/input_FinRes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/color_button"
+            android:inputType="date"
+            android:text="  Au jj/mm/aaaa"
+            android:textColor="@color/white"/>
 
-    <EditText
-        android:id="@+id/input_DebutRes"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="350dp"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/color_button"
-        android:ems="10"
-        android:inputType="date"
-        android:text="  Du jj/mm/aaaa"
-        android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/txtNbJrRes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/color_button"
+            android:text="  Soit .... Jours :"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
 
-    <EditText
-        android:id="@+id/input_FinRes"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="390dp"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/color_button"
-        android:ems="10"
-        android:inputType="date"
-        android:text="  Au jj/mm/aaaa"
-        android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/txtCoutRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coût de réservation :"
+            android:textColor="@color/white"
+            android:textSize="17dp"
 
-    <TextView
-        android:id="@+id/txtNbJrRes"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="430dp"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/color_button"
-        android:text="  Soit .... Jours :"
-        android:textColor="@color/white"
-        android:textSize="18dp" />
+            />
 
-    <TextView
-        android:id="@+id/txtCoutRes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="490dp"
-        android:text="Coût de réservation :"
-        android:textColor="@color/white"
-        android:textSize="17dp"
+        <TextView
+            android:id="@+id/txtAffichage_CoutRes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/color_button"
+            android:text="  ............. euros :"
+            android:textColor="@color/white"
+            android:textSize="18dp"/>
 
-        />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/color_button"
+            android:layout_gravity="center"
+            android:text="Réserver"
+            android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/txtAffichage_CoutRes"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="520dp"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/color_button"
-        android:text="  ............. euros :"
-        android:textColor="@color/white"
-        android:textSize="18dp"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="600dp"
-        android:backgroundTint="@color/color_button"
-        android:gravity="center"
-        android:text="Button"
-        android:textSize="20dp" />
-
+-->
 
 </RelativeLayout>

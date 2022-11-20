@@ -29,7 +29,6 @@ public class LocationVoitureAdapter extends FirestoreRecyclerAdapter<LocationVoi
 
         holder.marqueTextView.setText(locationVoiture.marque);
         holder.modelTextView.setText(locationVoiture.modele);
-        holder.prixHoraireTextView.setText(  locationVoiture.prixHoraire + " €/H");
         holder.prixJournalierTextView.setText(  locationVoiture.prixJournalier + " €/J");
         holder.timestampTextView.setText(Utility.timestampToString(locationVoiture.getTimestamp()));
 
@@ -58,7 +57,6 @@ public class LocationVoitureAdapter extends FirestoreRecyclerAdapter<LocationVoi
             super(itemView);
             marqueTextView = itemView.findViewById(R.id.marque_text_view);
             modelTextView = itemView.findViewById(R.id.model_text_view);
-            prixHoraireTextView = itemView.findViewById(R.id.prixHoraire_text_view);
             prixJournalierTextView = itemView.findViewById(R.id.prixJournalier_text_view);
             timestampTextView = itemView.findViewById(R.id.locationVoiture_timestamp_text_view);
 

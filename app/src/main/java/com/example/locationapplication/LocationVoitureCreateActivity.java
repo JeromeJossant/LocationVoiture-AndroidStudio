@@ -19,7 +19,7 @@ import com.google.firebase.firestore.DocumentReference;
 public class LocationVoitureCreateActivity extends AppCompatActivity {
 
 
-    EditText marqueEditText, modeleEditText, versionEditText, placeEditText, carburantEditText, boiteVitesseEditText, prixHoraireEditText, prixJournalierEditText, villeEditText, statutEditText;
+    EditText marqueEditText, modeleEditText, versionEditText, placeEditText, carburantEditText, boiteVitesseEditText, prixJournalierEditText, villeEditText, statutEditText;
     ImageButton saveLocationBtn, backBtn;
 
     String marque, modele, place, carburant, boiteVitesse, ville, statut, docId;
@@ -36,7 +36,6 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         placeEditText = findViewById(R.id.location_place_text);
         carburantEditText = findViewById(R.id.location_carburant_text);
         boiteVitesseEditText = findViewById(R.id.location_boiteV_text);
-        prixHoraireEditText = findViewById(R.id.location_prixH_text);
         prixJournalierEditText = findViewById(R.id.location_prixJ_text);
         villeEditText = findViewById(R.id.location_ville_text);
         statutEditText = findViewById(R.id.location_statut_text);
@@ -52,7 +51,6 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         boiteVitesse = getIntent().getStringExtra("boiteVitesse");
         ville = getIntent().getStringExtra("ville");
         statut = getIntent().getStringExtra("statut");
-        prixHoraire = getIntent().getFloatExtra("prixHoraire", 0);
         prixJournalier = getIntent().getFloatExtra("prixJournalier", 0);
         docId = getIntent().getStringExtra("docId");
 
@@ -63,7 +61,6 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         boiteVitesseEditText.setText(boiteVitesse);
         villeEditText.setText(ville);
         statutEditText.setText(statut);
-        prixHoraireEditText.setText(String.valueOf(prixHoraire));
         prixJournalierEditText.setText(String.valueOf(prixJournalier));
 
 
@@ -78,12 +75,11 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         String locationPlace = placeEditText.getText().toString();
         String locationCarburant = carburantEditText.getText().toString();
         String locationBoiteVitesse = boiteVitesseEditText.getText().toString();
-        Float locationPrixHoraire = Float.valueOf(prixHoraireEditText.getText().toString());
         Float locationPrixJournalier = Float.valueOf(prixJournalierEditText.getText().toString());
         String locationVille = villeEditText.getText().toString();
         String locationStatut = statutEditText.getText().toString();
 
-        boolean isValidateData = validateData(locationMarque, locationModele, locationVersion, locationPlace, locationCarburant, locationBoiteVitesse, locationPrixHoraire, locationPrixJournalier, locationVille, locationStatut);
+        boolean isValidateData = validateData(locationMarque, locationModele, locationVersion, locationPlace, locationCarburant, locationBoiteVitesse, locationPrixJournalier, locationVille, locationStatut);
         if (!isValidateData){
             return;
         }
@@ -97,7 +93,6 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         locationVoiture.setPlace(locationPlace);
         locationVoiture.setCarburant(locationCarburant);
         locationVoiture.setBoiteVitesse(locationBoiteVitesse);
-        locationVoiture.setPrixHoraire(locationPrixHoraire);
         locationVoiture.setPrixJournalier(locationPrixJournalier);
         locationVoiture.setVille(locationVille);
         locationVoiture.setStatut(locationStatut);
@@ -106,7 +101,7 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         saveLocationVoitureToFirebase(locationVoiture);
     }
 
-    boolean validateData(String locationMarque, String locationModele, String locationVersion, String locationPlace, String locationCarburant, String locationBoiteVitesse, Float locationPrixHoraire, Float locationPrixJournalier, String locationVille, String locationStatut) {
+    boolean validateData(String locationMarque, String locationModele, String locationVersion, String locationPlace, String locationCarburant, String locationBoiteVitesse, Float locationPrixJournalier, String locationVille, String locationStatut) {
 
         if (locationMarque == null || locationMarque.isEmpty()) {
             marqueEditText.setError("La marque a besoin d'être rentré");
@@ -132,11 +127,7 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
             boiteVitesseEditText.setError("La boite de vitesse a besoin d'être rentré");
             return false;
         }
-        if (locationPrixHoraire == null || locationPrixHoraire.isInfinite()) {
-            prixHoraireEditText.setError("Le prix horaire a besoin d'être rentré");
-            return false;
-        }
-        if (locationPrixJournalier == null || locationPrixJournalier.isInfinite()) {
+        if (locationPrixJournalier == null || locationPrixJournalier == 0) {
             prixJournalierEditText.setError("Le prix journalier a besoin d'être rentré");
             return false;
         }

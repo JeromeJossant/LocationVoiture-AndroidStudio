@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LocationApplication">
         <activity
+            android:name=".EditLocationVoitureActivity"
+            android:exported="false" />
+        <activity
             android:name=".ContactActivity"
             android:exported="false" />
         <activity

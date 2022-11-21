@@ -1,11 +1,8 @@
 package com.example.locationapplication;
 
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.locationapplication.models.LocationVoiture;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -25,14 +21,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LocationVoitureDetailsActivity extends AppCompatActivity {
 
-    TextView pageTitreTextView, marqueTextView, modeleTextView,versionTextView, placeTextView, boiteVitesseTextView , carburantTexView, prixHoraireTextView, prixJournalierTextView, villeTextView, statutTextView, dateTimestampTextView;
+    TextView pageTitreTextView, marqueTextView, modeleTextView,versionTextView, placeTextView, boiteVitesseTextView , carburantTexView, prixJournalierTextView, villeTextView, statutTextView, dateTimestampTextView;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
     String marque, modele, version, place, boiteVitesse, carburant, ville, statut, docId;
     Float prixHoraire, prixJournalier;
     Timestamp dateTimestamp;
-    ImageButton backBtn;
-    LinearLayout reservationLayout;
+    ImageButton backBtn, editLocationBtn;
+    LinearLayout reservationBtn;
 
 
 
@@ -41,7 +37,6 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_voiturelocation_details);
         marqueTextView = findViewById(R.id.marque_details_text_view);
         pageTitreTextView = findViewById(R.id.page_title);
-        prixHoraireTextView = findViewById(R.id.prixHoraire_details_text_view);
         prixJournalierTextView = findViewById(R.id.prixJournalier_details_text_view);
         dateTimestampTextView = findViewById(R.id.locationVoiture_timestamp_details_text_view);
         modeleTextView = findViewById(R.id.model_details_text_view);
@@ -51,14 +46,15 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
         boiteVitesseTextView = findViewById(R.id.boiteVitesse_details_text_view);
         villeTextView = findViewById(R.id.ville_details_text_view);
         statutTextView = findViewById(R.id.statut_details_text_view);
-        reservationLayout = findViewById(R.id.reserver_btn);
+        reservationBtn = findViewById(R.id.reserver_btn);
+        editLocationBtn = findViewById(R.id.edit_location_btn);
         backBtn = findViewById(R.id.back_btn);
 
         backBtn.setOnClickListener((v) -> {
             startActivity(new Intent(LocationVoitureDetailsActivity.this, MainActivity.class));
         });
 
-        reservationLayout.setOnClickListener(v -> {
+        reservationBtn.setOnClickListener(v -> {
             startActivity(new Intent(LocationVoitureDetailsActivity.this, ReservationActivity.class));
             Toast.makeText(LocationVoitureDetailsActivity.this, "Réservation en cours...", Toast.LENGTH_SHORT).show();
         });
@@ -85,7 +81,6 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
                         place = documentSnapshot.getString("place");
                         boiteVitesse = documentSnapshot.getString("boiteVitesse");
                         carburant = documentSnapshot.getString("carburant");
-                        prixHoraire = documentSnapshot.get("prixHoraire", Float.class);
                         prixJournalier = documentSnapshot.get("prixJournalier", Float.class);
                         ville = documentSnapshot.getString("ville");
                         statut = documentSnapshot.getString("statut");
@@ -97,7 +92,6 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
                         placeTextView.setText(place);
                         boiteVitesseTextView.setText(boiteVitesse);
                         carburantTexView.setText(carburant);
-                        prixHoraireTextView.setText(prixHoraire.toString());
                         prixJournalierTextView.setText(prixJournalier.toString());
                         villeTextView.setText(ville);
                         statutTextView.setText(statut);
@@ -113,6 +107,23 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
                 Toast.makeText(LocationVoitureDetailsActivity.this, "Erreur = "+ e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        editLocationBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(LocationVoitureDetailsActivity.this, EditLocationVoitureActivity.class);
+            intent.putExtra("marque", marque);
+            intent.putExtra("modele", modele);
+            intent.putExtra("version", version);
+            intent.putExtra("place", place);
+            intent.putExtra("boiteVitesse", boiteVitesse);
+            intent.putExtra("carburant", carburant);
+            intent.putExtra("prixJournalier", prixJournalier);
+            intent.putExtra("ville", ville);
+            intent.putExtra("statut", statut);
+            intent.putExtra("docId", docId);
+            startActivity(intent);
+            Toast.makeText(LocationVoitureDetailsActivity.this, "Modification en cours...", Toast.LENGTH_SHORT).show();
+        });
+
     }
 
 }

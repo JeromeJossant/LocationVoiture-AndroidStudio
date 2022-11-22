@@ -27,7 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="Contact"
+                    android:text="Contacter nous"
                     android:textColor="@color/white"
                     android:textSize="30dp"
                     android:textStyle="bold" />
@@ -65,6 +65,7 @@
                         android:layout_marginBottom="20dp"
                         android:background="@drawable/rounded_corner"
                         android:ems="10"
+                        android:backgroundTint="@color/color_button"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:text="Nom" />
@@ -78,6 +79,7 @@
 
                         android:background="@drawable/rounded_corner"
                         android:ems="10"
+                        android:backgroundTint="@color/color_button"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:text="Prénom" />
@@ -90,6 +92,7 @@
                         android:layout_marginBottom="20dp"
                         android:background="@drawable/rounded_corner"
                         android:ems="10"
+                        android:backgroundTint="@color/color_button"
                         android:textColor="@color/white"
                         android:inputType="textPersonName"
                         android:text="Email" />
@@ -102,6 +105,7 @@
                         android:layout_marginBottom="20dp"
                         android:background="@drawable/rounded_corner"
                         android:ems="10"
+                        android:backgroundTint="@color/color_button"
                         android:gravity="start|top"
                         android:inputType="textMultiLine"
                         android:textColor="@color/white"
@@ -114,6 +118,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:textAlignment="center"
+                        android:backgroundTint="@color/color_button"
                         android:textColor="@color/white"
                         android:textSize="30dp"
                         android:textStyle="bold"

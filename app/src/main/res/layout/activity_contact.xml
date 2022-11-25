@@ -68,7 +68,7 @@
                         android:backgroundTint="@color/color_button"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
-                        android:text="Nom" />
+                        android:hint="Nom" />
 
                     <EditText
                         android:id="@+id/editTextTextPersonName2"
@@ -82,7 +82,7 @@
                         android:backgroundTint="@color/color_button"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
-                        android:text="Prénom" />
+                        android:hint="Prénom" />
 
                     <EditText
                         android:id="@+id/editTextTextPersonName3"
@@ -95,7 +95,7 @@
                         android:backgroundTint="@color/color_button"
                         android:textColor="@color/white"
                         android:inputType="textPersonName"
-                        android:text="Email" />
+                        android:hint="Email" />
 
                     <EditText
                         android:id="@+id/editTextTextMultiLine2"
@@ -110,7 +110,7 @@
                         android:inputType="textMultiLine"
                         android:textColor="@color/white"
 
-                        android:text="Veuillez saisir votre massage " />
+                        android:hint="Veuillez saisir votre massage " />
 
                     <Button
                         android:layout_gravity="center"

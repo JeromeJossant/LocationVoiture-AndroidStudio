@@ -3,6 +3,7 @@ package com.example.locationapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,8 +17,13 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class LocationVoitureDetailsActivity extends AppCompatActivity {
 
@@ -25,10 +31,14 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
     String marque, modele, version, place, boiteVitesse, carburant, ville, statut, docId;
-    Float prixHoraire, prixJournalier;
+    Float prixJournalier;
     Timestamp dateTimestamp;
     ImageButton backBtn, editLocationBtn;
     LinearLayout reservationBtn;
+
+    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
 
 
 
@@ -72,6 +82,7 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
         firebaseFirestore.collection("locationVoiture").document(docId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
                 if (task.isSuccessful()){
                     DocumentSnapshot documentSnapshot = task.getResult();
                     if (documentSnapshot != null && documentSnapshot.exists()){
@@ -108,6 +119,8 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
             }
         });
 
+
+
         editLocationBtn.setOnClickListener(v -> {
             Intent intent = new Intent(LocationVoitureDetailsActivity.this, EditLocationVoitureActivity.class);
             intent.putExtra("marque", marque);
@@ -126,4 +139,17 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
 
     }
 
+
+/*
+    void ChangeIcon(boolean query){
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        CollectionReference collectionReference = firebaseFirestore.collection("locationVoiture");
+        Query query = collectionReference.whereEqualTo("userId", currentUser);
+        if (currentUser == query){
+            editLocationBtn.setVisibility(View.VISIBLE);
+        } else {
+            editLocationBtn.setVisibility(View.GONE);
+        }
+
+    }*/
 }

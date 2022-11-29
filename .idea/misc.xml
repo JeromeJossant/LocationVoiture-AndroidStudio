@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.2535" />
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.144" />
+        <entry key="app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.197" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2535" />
         <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.246" />
         <entry key="app/src/main/res/drawable/selector.xml" value="0.26" />
@@ -20,6 +21,8 @@
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.32543487548828126" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_voiturelocation_details.xml" value="0.4620620727539063" />
+        <entry key="app/src/main/res/layout/confirmatin.xml" value="0.1890625" />
+        <entry key="app/src/main/res/layout/confirmation.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/fragment_contact.xml" value="0.2667572463768116" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2667572463768116" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2667572463768116" />

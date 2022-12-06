@@ -142,6 +142,7 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         return true;
     }
 
+
     void saveLocationVoitureToFirebase(LocationVoiture locationVoiture){
 
         DocumentReference documentReference;

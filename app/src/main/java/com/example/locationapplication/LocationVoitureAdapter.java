@@ -38,6 +38,7 @@ public class LocationVoitureAdapter extends FirestoreRecyclerAdapter<LocationVoi
             String docId = getSnapshots().getSnapshot(position).getId();
             intent.putExtra("docId", docId);
             context.startActivity(intent);
+
         });
     }
 

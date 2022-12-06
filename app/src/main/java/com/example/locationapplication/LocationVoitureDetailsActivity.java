@@ -3,6 +3,7 @@ package com.example.locationapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,17 +32,13 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
     TextView pageTitreTextView, marqueTextView, modeleTextView,versionTextView, placeTextView, boiteVitesseTextView , carburantTexView, prixJournalierTextView, villeTextView, statutTextView, dateTimestampTextView;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
-    String marque, modele, version, place, boiteVitesse, carburant, ville, statut, docId;
+    String marque, modele, version, place, boiteVitesse, carburant, ville, statut, docId, uid;
     Float prixJournalier;
     Timestamp dateTimestamp;
-    ImageButton backBtn, editLocationBtn;
+    ImageButton backBtn, editLocationBtn, deleteLocationBtn;
     LinearLayout reservationBtn;
 
     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-
-
-
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +57,7 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
         reservationBtn = findViewById(R.id.reserver_btn);
         editLocationBtn = findViewById(R.id.edit_location_btn);
         backBtn = findViewById(R.id.back_btn);
+        deleteLocationBtn = findViewById(R.id.delete_location_btn);
 
         backBtn.setOnClickListener((v) -> {
             startActivity(new Intent(LocationVoitureDetailsActivity.this, MainActivity.class));
@@ -69,9 +68,24 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
             Toast.makeText(LocationVoitureDetailsActivity.this, "Réservation en cours...", Toast.LENGTH_SHORT).show();
         });
 
+        deleteLocationBtn.setOnClickListener(v -> {
+            firebaseFirestore.collection("locationVoiture").document(docId).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(LocationVoitureDetailsActivity.this, "Suppression réussie", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LocationVoitureDetailsActivity.this, MainActivity.class));
+                    } else {
+                        Toast.makeText(LocationVoitureDetailsActivity.this, "Erreur = " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        });
+
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
+        deleteLocationBtn.setVisibility(View.GONE);
 
         if (firebaseAuth.getCurrentUser() != null) {
             docId = getIntent().getStringExtra("docId");
@@ -83,9 +97,9 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     DocumentSnapshot documentSnapshot = task.getResult();
-                    if (documentSnapshot != null && documentSnapshot.exists()){
+                    if (documentSnapshot != null && documentSnapshot.exists()) {
                         marque = documentSnapshot.getString("marque");
                         modele = documentSnapshot.getString("modele");
                         version = documentSnapshot.getString("version");
@@ -96,6 +110,7 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
                         ville = documentSnapshot.getString("ville");
                         statut = documentSnapshot.getString("statut");
                         dateTimestamp = documentSnapshot.getTimestamp("timestamp");
+                        uid = documentSnapshot.getString("userId");
 
                         marqueTextView.setText(marque);
                         modeleTextView.setText(modele);
@@ -107,6 +122,12 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
                         villeTextView.setText(ville);
                         statutTextView.setText(statut);
                         dateTimestampTextView.setText(Utility.timestampToString(dateTimestamp));
+
+                        if (currentUser.getUid().equals(uid)) { // Test currentUser et userId de la task
+                            deleteLocationBtn.setVisibility(View.VISIBLE);
+                        } else {
+                            deleteLocationBtn.setVisibility(View.GONE);
+                        }
                     } else {
                         Toast.makeText(LocationVoitureDetailsActivity.this, "Document does not exist", Toast.LENGTH_SHORT).show();
                     }
@@ -115,13 +136,12 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(LocationVoitureDetailsActivity.this, "Erreur = "+ e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LocationVoitureDetailsActivity.this, "Erreur = " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
 
-
-        editLocationBtn.setOnClickListener(v -> {
+   /*     editLocationBtn.setOnClickListener(v -> {
             Intent intent = new Intent(LocationVoitureDetailsActivity.this, EditLocationVoitureActivity.class);
             intent.putExtra("marque", marque);
             intent.putExtra("modele", modele);
@@ -135,21 +155,6 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
             intent.putExtra("docId", docId);
             startActivity(intent);
             Toast.makeText(LocationVoitureDetailsActivity.this, "Modification en cours...", Toast.LENGTH_SHORT).show();
-        });
-
+        });*/
     }
-
-
-/*
-    void ChangeIcon(boolean query){
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        CollectionReference collectionReference = firebaseFirestore.collection("locationVoiture");
-        Query query = collectionReference.whereEqualTo("userId", currentUser);
-        if (currentUser == query){
-            editLocationBtn.setVisibility(View.VISIBLE);
-        } else {
-            editLocationBtn.setVisibility(View.GONE);
-        }
-
-    }*/
 }

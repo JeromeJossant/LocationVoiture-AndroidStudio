@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     //connexion autorisée
 
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, ListLocationActivity.class));
                     finish();
                     if (firebaseAuth.getCurrentUser().isEmailVerified()) {
                     } else {

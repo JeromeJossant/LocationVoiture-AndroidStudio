@@ -18,9 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.auth.FirebaseAppCheckTokenProvider;
 
-public class MainActivity extends AppCompatActivity {
+public class ListLocationActivity extends AppCompatActivity {
 
     FloatingActionButton addLocationBtn;
     ImageButton menuBtn;
@@ -62,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        addLocationBtn.setOnClickListener((v) -> startActivity( new Intent(MainActivity.this, LocationVoitureCreateActivity.class)) );
+        addLocationBtn.setOnClickListener((v) -> startActivity( new Intent(ListLocationActivity.this, LocationVoitureCreateActivity.class)) );
         menuBtn.setOnClickListener((v) ->showMenu() );
         setupRecyclerView();
 
     }
 
     void showMenu(){
-        PopupMenu popupMenu = new PopupMenu(MainActivity.this, menuBtn);
+        PopupMenu popupMenu = new PopupMenu(ListLocationActivity.this, menuBtn);
         popupMenu.getMenu().add("Profil");
         popupMenu.getMenu().add("Se déconcecter");
         popupMenu.show();
@@ -78,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 if (menuItem.getTitle() == "Se déconcecter") {
                     FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    startActivity(new Intent(ListLocationActivity.this, LoginActivity.class));
                     finish();
                 } if (menuItem.getTitle() == "Profil") {
-                    startActivity(new Intent(MainActivity.this, ProfilActivity.class));
+                    startActivity(new Intent(ListLocationActivity.this, ProfilActivity.class));
                 }
                 return false;
             }

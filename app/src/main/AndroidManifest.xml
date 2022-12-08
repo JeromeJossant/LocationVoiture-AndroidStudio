@@ -29,7 +29,7 @@
             android:name=".LocationVoitureCreateActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ListLocationActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

@@ -3,7 +3,6 @@ package com.example.locationapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -13,21 +12,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.locationapplication.models.LocationVoiture;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class LocationVoitureDetailsActivity extends AppCompatActivity {
 
@@ -63,7 +55,7 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
 
 
         backBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(LocationVoitureDetailsActivity.this, MainActivity.class));
+            startActivity(new Intent(LocationVoitureDetailsActivity.this, ListLocationActivity.class));
         });
 
         reservationBtn.setOnClickListener(v -> {
@@ -77,7 +69,7 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(LocationVoitureDetailsActivity.this, "Suppression réussie", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LocationVoitureDetailsActivity.this, MainActivity.class));
+                        startActivity(new Intent(LocationVoitureDetailsActivity.this, ListLocationActivity.class));
                     } else {
                         Toast.makeText(LocationVoitureDetailsActivity.this, "Erreur = " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

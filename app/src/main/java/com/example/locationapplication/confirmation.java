@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +25,7 @@ public class confirmation extends AppCompatActivity {
                 if(currentUser == null){
                     startActivity(new Intent(confirmation.this,LoginActivity.class));
                 }else {
-                    startActivity(new Intent(confirmation.this,MainActivity.class));
+                    startActivity(new Intent(confirmation.this, ListLocationActivity.class));
                 }
                 finish();
             }

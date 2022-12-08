@@ -16,15 +16,12 @@ public class Utility {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         return FirebaseFirestore.getInstance().collection("locationVoiture");
     }
-    static DocumentReference getCollectionReferenceForLocationVoitureUser() {
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        return FirebaseFirestore.getInstance().collection("locationVoiture").document(currentUser.getUid());
-    }
 
-    static CollectionReference getCollectionReferenceForLocationVoitureT() {
+
+
+    static CollectionReference getCollectionReferenceForContact() {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        return FirebaseFirestore.getInstance().collection("locationVoiture")
-                .document(currentUser.getUid()).collection("my_locationVoiture");
+        return FirebaseFirestore.getInstance().collection("contact");
     }
 
     static DocumentReference getCollectionReferenceForUser() {

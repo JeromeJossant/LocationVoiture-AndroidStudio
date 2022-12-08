@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.locationapplication.models.LocationVoiture;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,6 +22,7 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -59,6 +61,7 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
         backBtn = findViewById(R.id.back_btn);
         deleteLocationBtn = findViewById(R.id.delete_location_btn);
 
+
         backBtn.setOnClickListener((v) -> {
             startActivity(new Intent(LocationVoitureDetailsActivity.this, MainActivity.class));
         });
@@ -82,10 +85,20 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
             });
         });
 
+        editLocationBtn.setOnClickListener(v ->{
+            startActivity(new Intent(LocationVoitureDetailsActivity.this, EditLocationVoitureActivity.class));
+            Toast.makeText(LocationVoitureDetailsActivity.this, "Modification en cours...", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LocationVoitureDetailsActivity.this, EditLocationVoitureActivity.class);
+            intent.putExtra("docId", docId);
+            intent.putExtra("marque", marque);
+            startActivity(intent);
+        });
+
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         deleteLocationBtn.setVisibility(View.GONE);
+        editLocationBtn.setVisibility(View.GONE);
 
         if (firebaseAuth.getCurrentUser() != null) {
             docId = getIntent().getStringExtra("docId");
@@ -125,8 +138,10 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
 
                         if (currentUser.getUid().equals(uid)) { // Test currentUser et userId de la task
                             deleteLocationBtn.setVisibility(View.VISIBLE);
+                            editLocationBtn.setVisibility(View.VISIBLE);
                         } else {
                             deleteLocationBtn.setVisibility(View.GONE);
+                            editLocationBtn.setVisibility(View.GONE);
                         }
                     } else {
                         Toast.makeText(LocationVoitureDetailsActivity.this, "Document does not exist", Toast.LENGTH_SHORT).show();
@@ -139,22 +154,5 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
                 Toast.makeText(LocationVoitureDetailsActivity.this, "Erreur = " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
-   /*     editLocationBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(LocationVoitureDetailsActivity.this, EditLocationVoitureActivity.class);
-            intent.putExtra("marque", marque);
-            intent.putExtra("modele", modele);
-            intent.putExtra("version", version);
-            intent.putExtra("place", place);
-            intent.putExtra("boiteVitesse", boiteVitesse);
-            intent.putExtra("carburant", carburant);
-            intent.putExtra("prixJournalier", prixJournalier);
-            intent.putExtra("ville", ville);
-            intent.putExtra("statut", statut);
-            intent.putExtra("docId", docId);
-            startActivity(intent);
-            Toast.makeText(LocationVoitureDetailsActivity.this, "Modification en cours...", Toast.LENGTH_SHORT).show();
-        });*/
     }
 }

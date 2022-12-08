@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -25,17 +27,17 @@ public class EditLocationVoitureActivity extends AppCompatActivity {
     TextView pageTitreTextView, marqueTextView, modeleTextView,versionTextView, placeTextView, boiteVitesseTextView , carburantTexView, prixJournalierTextView, villeTextView, statutTextView, dateTimestampTextView;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
-    String marque, modele, version, place, boiteVitesse, carburant, ville, statut, docId;
-    Float prixHoraire, prixJournalier;
+    String marque, modele, version, place, boiteVitesse, carburant, ville, statut, docId, uid;
+    Float prixJournalier;
     Timestamp dateTimestamp;
     ImageButton backBtn, editLocationBtn;
     LinearLayout reservationBtn;
-    boolean isEditable = false;
 
+    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_location);
+        setContentView(R.layout.activity_location_create);
 
         marqueTextView = findViewById(R.id.marque_details_text_view);
         pageTitreTextView = findViewById(R.id.page_title);
@@ -54,20 +56,15 @@ public class EditLocationVoitureActivity extends AppCompatActivity {
 
         backBtn.setOnClickListener( (v) -> finish());
 
-     /*   marque = getIntent().getStringExtra("marque");
-        modele = getIntent().getStringExtra("modele");
-        place = getIntent().getStringExtra("place");
-        carburant = getIntent().getStringExtra("carburant");
-        boiteVitesse = getIntent().getStringExtra("boiteVitesse");
-        ville = getIntent().getStringExtra("ville");
-        statut = getIntent().getStringExtra("statut");
-        prixHoraire = getIntent().getFloatExtra("prixHoraire", 0);
-        docId = getIntent().getStringExtra("docId");
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
+        Toast.makeText(this, marque, Toast.LENGTH_SHORT).show();
 
         if (docId != null && !docId.isEmpty()) {
-            isEditable = true;
             pageTitreTextView.setText("Modification");
-        }*/
+        }
 
     }
 }

@@ -23,7 +23,7 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
     ImageButton saveLocationBtn, backBtn;
 
     String marque, modele, place, carburant, boiteVitesse, ville, statut, docId;
-    Float prixHoraire, prixJournalier;
+    Float prixJournalier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +141,6 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         }
         return true;
     }
-
 
     void saveLocationVoitureToFirebase(LocationVoiture locationVoiture){
 

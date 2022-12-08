@@ -10,7 +10,6 @@ public class LocationVoiture {
     public String place;
     public String carburant;
     public String boiteVitesse;
-    public Float prixHoraire;
     public Float prixJournalier;
     public String ville;
     public String statut;
@@ -21,14 +20,13 @@ public class LocationVoiture {
     public LocationVoiture() {
     }
 
-    public LocationVoiture(String marque, String modele, String version, String place, String carburant, String boiteVitesse, Float prixHoraire, Float prixJournalier, String ville, String statut, String userId, Timestamp timestamp) {
+    public LocationVoiture(String marque, String modele, String version, String place, String carburant, String boiteVitesse, Float prixJournalier, String ville, String statut, String userId, Timestamp timestamp) {
         this.marque = marque;
         this.modele = modele;
         this.version = version;
         this.place = place;
         this.carburant = carburant;
         this.boiteVitesse = boiteVitesse;
-        this.prixHoraire = prixHoraire;
         this.prixJournalier = prixJournalier;
         this.ville = ville;
         this.statut = statut;
@@ -82,14 +80,6 @@ public class LocationVoiture {
 
     public void setBoiteVitesse(String boiteVitesse) {
         this.boiteVitesse = boiteVitesse;
-    }
-
-    public Float getPrixHoraire() {
-        return prixHoraire;
-    }
-
-    public void setPrixHoraire(Float prixHoraire) {
-        this.prixHoraire = prixHoraire;
     }
 
     public Float getPrixJournalier() {
@@ -149,7 +139,6 @@ public class LocationVoiture {
                 ", place='" + place + '\'' +
                 ", carburant='" + carburant + '\'' +
                 ", boiteVitesse='" + boiteVitesse + '\'' +
-                ", prixHoraire=" + prixHoraire +
                 ", prixJournalier=" + prixJournalier +
                 ", ville='" + ville + '\'' +
                 ", statut='" + statut + '\'' +

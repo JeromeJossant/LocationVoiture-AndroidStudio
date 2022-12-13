@@ -55,7 +55,7 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
 
 
         backBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(LocationVoitureDetailsActivity.this, ListLocationActivity.class));
+            onBackPressed();
         });
 
         reservationBtn.setOnClickListener(v -> {

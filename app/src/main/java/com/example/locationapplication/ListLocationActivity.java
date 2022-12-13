@@ -70,6 +70,7 @@ public class ListLocationActivity extends AppCompatActivity {
     void showMenu(){
         PopupMenu popupMenu = new PopupMenu(ListLocationActivity.this, menuBtn);
         popupMenu.getMenu().add("Profil");
+        popupMenu.getMenu().add("Mes annonces");
         popupMenu.getMenu().add("Se déconcecter");
         popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -81,6 +82,9 @@ public class ListLocationActivity extends AppCompatActivity {
                     finish();
                 } if (menuItem.getTitle() == "Profil") {
                     startActivity(new Intent(ListLocationActivity.this, ProfilActivity.class));
+                }
+                if (menuItem.getTitle() == "Mes annonces") {
+                    startActivity(new Intent(ListLocationActivity.this, myAdsActivity.class));
                 }
                 return false;
             }

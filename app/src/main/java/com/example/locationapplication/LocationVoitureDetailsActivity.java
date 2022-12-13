@@ -77,12 +77,18 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
             });
         });
 
-        editLocationBtn.setOnClickListener(v ->{
-            startActivity(new Intent(LocationVoitureDetailsActivity.this, EditLocationVoitureActivity.class));
-            Toast.makeText(LocationVoitureDetailsActivity.this, "Modification en cours...", Toast.LENGTH_SHORT).show();
+        editLocationBtn.setOnClickListener(v -> {
             Intent intent = new Intent(LocationVoitureDetailsActivity.this, EditLocationVoitureActivity.class);
-            intent.putExtra("docId", docId);
             intent.putExtra("marque", marque);
+            intent.putExtra("modele", modele);
+            intent.putExtra("version", version);
+            intent.putExtra("place", place);
+            intent.putExtra("boiteVitesse", boiteVitesse);
+            intent.putExtra("carburant", carburant);
+            intent.putExtra("prixJournalier", prixJournalier);
+            intent.putExtra("ville", ville);
+            intent.putExtra("statut", statut);
+            intent.putExtra("docId", docId);
             startActivity(intent);
         });
 

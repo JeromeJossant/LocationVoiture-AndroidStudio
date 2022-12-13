@@ -35,7 +35,7 @@ tools:context=".EditLocationVoitureActivity">
     <ImageButton
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:id="@+id/save_location_btn"
+        android:id="@+id/save_edit_location_btn"
         android:src="@drawable/ic_baseline_done_24"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
@@ -60,7 +60,7 @@ tools:context=".EditLocationVoitureActivity">
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/location_marque_text"
+            android:id="@+id/edit_location_marque"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
@@ -71,7 +71,7 @@ tools:context=".EditLocationVoitureActivity">
             android:textColor="@color/black"
             android:textSize="20sp" />
         <EditText
-            android:id="@+id/location_modele_text"
+            android:id="@+id/edit_location_modele"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
@@ -83,7 +83,7 @@ tools:context=".EditLocationVoitureActivity">
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/location_version_text"
+            android:id="@+id/edit_location_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
@@ -94,7 +94,7 @@ tools:context=".EditLocationVoitureActivity">
             android:textColor="@color/black"
             android:textSize="20sp" />
         <EditText
-            android:id="@+id/location_place_text"
+            android:id="@+id/edit_location_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
@@ -105,7 +105,7 @@ tools:context=".EditLocationVoitureActivity">
             android:textColor="@color/black"
             android:textSize="20sp" />
         <EditText
-            android:id="@+id/location_carburant_text"
+            android:id="@+id/edit_location_carburant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
@@ -116,7 +116,7 @@ tools:context=".EditLocationVoitureActivity">
             android:textColor="@color/black"
             android:textSize="20sp" />
         <EditText
-            android:id="@+id/location_boiteV_text"
+            android:id="@+id/edit_location_boiteVitesse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
@@ -128,7 +128,7 @@ tools:context=".EditLocationVoitureActivity">
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/location_prixJ_text"
+            android:id="@+id/edit_location_prixJournalier"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
@@ -140,7 +140,7 @@ tools:context=".EditLocationVoitureActivity">
             android:textSize="20sp"/>
 
         <EditText
-            android:id="@+id/location_ville_text"
+            android:id="@+id/edit_location_ville"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
@@ -152,7 +152,7 @@ tools:context=".EditLocationVoitureActivity">
             android:textSize="20sp"/>
 
         <EditText
-            android:id="@+id/location_statut_text"
+            android:id="@+id/edit_location_statut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"

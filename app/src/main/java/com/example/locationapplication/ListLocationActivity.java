@@ -94,7 +94,7 @@ public class ListLocationActivity extends AppCompatActivity {
     }
 
     void setupRecyclerView(){
-        Query query = Utility.getCollectionReferenceForLocationVoiture().whereEqualTo("statut", "Disponible").orderBy("timestamp", Query.Direction.DESCENDING);
+        Query query = Utility.getCollectionReferenceForLocationVoiture().orderBy("timestamp", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<LocationVoiture> options = new FirestoreRecyclerOptions.Builder<LocationVoiture>()
                 .setQuery(query, LocationVoiture.class)
                 .build();

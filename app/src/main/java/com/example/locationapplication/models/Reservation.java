@@ -7,13 +7,13 @@ public class Reservation {
     private Date dateDebut;
     private Date dateFin;
     private Float cout;
-    private Integer idLocationVoiture;
-    private Integer idUser;
+    private String idLocationVoiture;
+    private String idUser;
 
 public Reservation() {
     }
 
-    public Reservation(String id, Date dateDebut, Date dateFin, Float cout, Integer idLocationVoiture, Integer idUser) {
+    public Reservation(String id, Date dateDebut, Date dateFin, Float cout, String idLocationVoiture, String idUser) {
         this.id = id;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
@@ -54,19 +54,19 @@ public Reservation() {
         this.cout = cout;
     }
 
-    public Integer getIdLocationVoiture() {
+    public String getIdLocationVoiture() {
         return idLocationVoiture;
     }
 
-    public void setIdLocationVoiture(Integer idLocationVoiture) {
+    public void setIdLocationVoiture(String idLocationVoiture) {
         this.idLocationVoiture = idLocationVoiture;
     }
 
-    public Integer getIdUser() {
+    public String getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(Integer idUser) {
+    public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
 

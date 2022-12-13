@@ -14,10 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.locationapplication.models.Contact;
+import com.example.locationapplication.models.Reservation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -29,9 +34,10 @@ public class ReservationActivity extends AppCompatActivity {
 
     ImageButton backBtn;
     TextView dateDebutTextView, dateFinTextView, coutTextView, marqueModelTextView, prixJournalierTextView;
-    float prixRecupere = 0, prixJournalier;
+    float prixJournalier;
     String docId, marque, modele;
     FirebaseAuth firebaseAuth;
+    Button reserverBtn, voirPrixBtn;
 
     FirebaseFirestore firebaseFirestore;
 
@@ -45,23 +51,30 @@ public class ReservationActivity extends AppCompatActivity {
         marqueModelTextView = findViewById(R.id.marque_model_version_text_view);
         prixJournalierTextView = findViewById(R.id.prix_journalier_text_view);
         coutTextView = findViewById(R.id.cout_text_view);
+        reserverBtn = findViewById(R.id.valider_btn);
+        voirPrixBtn = findViewById(R.id.voir_prix);
         
         backBtn = findViewById(R.id.back_btn);
 
-        backBtn.setOnClickListener((v) -> {
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");  //Format de date souhaité
-            try {
-                Date dateAvant = format.parse(dateDebutTextView.getText().toString());
-                Date dateFin = format.parse(dateFinTextView.getText().toString());
-                long differenceDate = dateFin.getTime()-dateAvant.getTime();
-                float nbJours = (differenceDate/(1000 * 60 * 60 * 24));
-                String cout = String.valueOf(nbJours * prixRecupere);
-                coutTextView.setText(cout);
-            }catch(Exception e){
-                e.printStackTrace();
-            }
 
+        voirPrixBtn.setOnClickListener((v) -> {
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");  //Format de date souhaité
+        try {
+            Date dateAvant = format.parse(dateDebutTextView.getText().toString());
+            Date dateFin = format.parse(dateFinTextView.getText().toString());
+            long differenceDate = dateFin.getTime()-dateAvant.getTime();
+            float nbJours = (differenceDate/(1000 * 60 * 60 * 24));
+            String cout = String.valueOf(nbJours * prixJournalier);
+            Toast.makeText(ReservationActivity.this, cout, Toast.LENGTH_SHORT).show();
+            coutTextView.setText(cout);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         });
+
+        reserverBtn.setOnClickListener((v) -> createReservation());
+
+        backBtn.setOnClickListener((v) -> finish());
 
         dateDebutTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,4 +177,38 @@ public class ReservationActivity extends AppCompatActivity {
             datePickerDialog.show();
 
         }
+
+    private void createReservation() {
+
+        Float cout = Float.valueOf(coutTextView.getText().toString());
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        Reservation reservation = new Reservation();
+        reservation.setCout(cout);
+        reservation.setIdLocationVoiture(docId);
+        reservation.setIdUser(currentUser.getUid());
+
+        saveReservationToFirebase(reservation);
+
+    }
+
+
+    void saveReservationToFirebase(Reservation reservation){
+
+        DocumentReference documentReference;
+        documentReference = Utility.getCollectionReferenceForReservation().document();
+
+        documentReference.set(reservation).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(ReservationActivity.this, "Votre réservation a été éffecuté avec success.", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(ReservationActivity.this, "Erreur, votre réservation n'a pas été éffectué !", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 }

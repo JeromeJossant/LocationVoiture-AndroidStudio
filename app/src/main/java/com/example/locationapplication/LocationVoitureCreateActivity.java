@@ -25,9 +25,11 @@ import java.util.Locale;
 public class LocationVoitureCreateActivity extends AppCompatActivity {
 
 
-    EditText marqueEditText, modeleEditText, versionEditText, placeEditText, carburantEditText, boiteVitesseEditText, prixJournalierEditText, villeEditText;
+    EditText marqueEditText, modeleEditText, versionEditText, placeEditText, carburantEditText, boiteVitesseEditText, prixJournalierEditText, villeEditText, statutEditText;
     ImageButton saveLocationBtn, backBtn;
     Vibrator vibrator;
+    String marque, modele, version, place, carburant, boiteVitesse, ville, statut, docId;
+    float prixJournalier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +44,37 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         boiteVitesseEditText = findViewById(R.id.location_boiteV_text);
         prixJournalierEditText = findViewById(R.id.location_prixJ_text);
         villeEditText = findViewById(R.id.location_ville_text);
+        statutEditText = findViewById(R.id.location_statut_text);
         saveLocationBtn = findViewById(R.id.save_location_btn);
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         backBtn = findViewById(R.id.back_btn);
 
         saveLocationBtn.setOnClickListener( (v) -> saveLocation());
         backBtn.setOnClickListener( (v) -> finish());
+
+        marque = getIntent().getStringExtra("marque");
+        modele = getIntent().getStringExtra("modele");
+        place = getIntent().getStringExtra("place");
+        version = getIntent().getStringExtra("version");
+        carburant = getIntent().getStringExtra("carburant");
+        boiteVitesse = getIntent().getStringExtra("boiteVitesse");
+        ville = getIntent().getStringExtra("ville");
+        statut = getIntent().getStringExtra("statut");
+        prixJournalier = getIntent().getFloatExtra("prixJournalier", 0);
+        docId = getIntent().getStringExtra("docId");
+
+        marqueEditText.setText(marque);
+        modeleEditText.setText(modele);
+        placeEditText.setText(place);
+        versionEditText.setText(version);
+        carburantEditText.setText(carburant);
+        boiteVitesseEditText.setText(boiteVitesse);
+        villeEditText.setText(ville);
+        statutEditText.setText(statut);
+        prixJournalierEditText.setText(String.valueOf(prixJournalier));
     }
+
+
 
     void saveLocation() {
         String locationMarque = marqueEditText.getText().toString().trim();
@@ -59,8 +85,9 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         String locationBoiteVitesse = boiteVitesseEditText.getText().toString();
         Float locationPrixJournalier = Float.valueOf(prixJournalierEditText.getText().toString().trim());
         String locationVille = villeEditText.getText().toString().trim();
+        String locationStatut = statutEditText.getText().toString().trim();
 
-        boolean isValidateData = validateData(locationMarque, locationModele, locationVersion, locationPlace, locationCarburant, locationBoiteVitesse, locationPrixJournalier, locationVille);
+        boolean isValidateData = validateData(locationMarque, locationModele, locationVersion, locationPlace, locationCarburant, locationBoiteVitesse, locationPrixJournalier, locationVille, locationStatut);
         if (!isValidateData){
             return;
         }
@@ -76,52 +103,52 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         locationVoiture.setBoiteVitesse(locationBoiteVitesse);
         locationVoiture.setPrixJournalier(locationPrixJournalier);
         locationVoiture.setVille(locationVille);
-        locationVoiture.setStatut("Disponible");
+        locationVoiture.setStatut(locationStatut);
         locationVoiture.setTimestamp(Timestamp.now());
         locationVoiture.setUserId(currentUser.getUid());
         saveLocationVoitureToFirebase(locationVoiture);
     }
 
-    boolean validateData(String locationMarque, String locationModele, String locationVersion, String locationPlace, String locationCarburant, String locationBoiteVitesse, Float locationPrixJournalier, String locationVille) {
+    boolean validateData(String locationMarque, String locationModele, String locationVersion, String locationPlace, String locationCarburant, String locationBoiteVitesse, Float locationPrixJournalier, String locationVille, String locationStatut) {
 
         if (locationMarque == null || locationMarque.isEmpty()) {
             marqueEditText.setError("La marque a besoin d'être rentré");
-            vibrator.vibrate(75);
+            vibrator.vibrate(100);
             return false;
         }
         if (locationModele == null || locationModele.isEmpty()) {
             modeleEditText.setError("Le modèle a besoin d'être rentré");
-            vibrator.vibrate(75);
+            vibrator.vibrate(100);
             return false;
         }
         if (locationVersion == null || locationVersion.isEmpty()) {
             versionEditText.setError("La version a besoin d'être rentré");
-            vibrator.vibrate(75);
+            vibrator.vibrate(100);
             return false;
         }
         if (locationPlace == null || locationPlace.isEmpty()) {
             placeEditText.setError("Le nombre de place a besoin d'être rentré");
-            vibrator.vibrate(75);
+            vibrator.vibrate(100);
             return false;
         }
         if (locationCarburant == null || locationCarburant.isEmpty()) {
             carburantEditText.setError("Le carburant a besoin d'être rentré");
-            vibrator.vibrate(75);
+            vibrator.vibrate(100);
             return false;
         }
         if (locationBoiteVitesse == null || locationBoiteVitesse.isEmpty()) {
             boiteVitesseEditText.setError("La boite de vitesse a besoin d'être rentré");
-            vibrator.vibrate(75);
-            return false;
-        }
-        if (locationPrixJournalier == null || locationPrixJournalier == 0) {
-            prixJournalierEditText.setError("Le prix journalier a besoin d'être rentré");
-            vibrator.vibrate(75);
+            vibrator.vibrate(100);
             return false;
         }
         if (locationVille == null || locationVille.isEmpty()) {
             villeEditText.setError("La ville a besoin d'être rentré");
-            vibrator.vibrate(75);
+            vibrator.vibrate(100);
+            return false;
+        }
+        if (locationStatut == null || locationStatut.isEmpty()) {
+            statutEditText.setError("Le statut a besoin d'être rentré");
+            vibrator.vibrate(100);
             return false;
         }
         return true;

@@ -198,8 +198,8 @@ public class EditLocationVoitureActivity extends AppCompatActivity {
             villeEditText.setError("La ville a besoin d'être rentré");
             return false;
         }
-        if (locationStatut == null || locationStatut.isEmpty()) {
-            statutEditText.setError("Le statut a besoin d'être rentré");
+        if (locationStatut == null || locationStatut.isEmpty())   {
+            statutEditText.setError("Le statut a besoin d'être rentré correctement (Disponible) ou (Indisponible)");
             return false;
         }
         return true;

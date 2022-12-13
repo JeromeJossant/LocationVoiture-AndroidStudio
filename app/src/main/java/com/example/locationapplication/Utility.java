@@ -17,26 +17,17 @@ public class Utility {
         return FirebaseFirestore.getInstance().collection("locationVoiture");
     }
 
-
-
     static CollectionReference getCollectionReferenceForContact() {
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         return FirebaseFirestore.getInstance().collection("contact");
     }
 
-    static DocumentReference getCollectionReferenceForUser() {
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        return FirebaseFirestore.getInstance().collection("users").document(currentUser.getUid());
+    static CollectionReference getCollectionReferenceForReservation() {
+        return FirebaseFirestore.getInstance().collection("reservation");
     }
-
 
     static String timestampToString(Timestamp timestamp) {
        return new SimpleDateFormat("dd/MM/yyyy").format(timestamp.toDate());
     }
 
-    static Query getCollectionReferenceLocationVoitureForUser() {
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        return FirebaseFirestore.getInstance().collection("locationVoiture").whereEqualTo("userId", currentUser);
-    }
 
 }

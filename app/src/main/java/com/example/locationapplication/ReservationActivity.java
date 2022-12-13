@@ -8,9 +8,18 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,8 +28,12 @@ import java.util.Date;
 public class ReservationActivity extends AppCompatActivity {
 
     ImageButton backBtn;
-    TextView dateDebutTextView, dateFinTextView, coutTextView;
-    float prixRecupere = 0;
+    TextView dateDebutTextView, dateFinTextView, coutTextView, marqueModelTextView, prixJournalierTextView;
+    float prixRecupere = 0, prixJournalier;
+    String docId, marque, modele;
+    FirebaseAuth firebaseAuth;
+
+    FirebaseFirestore firebaseFirestore;
 
 
     @Override
@@ -29,6 +42,8 @@ public class ReservationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reservation);
         dateDebutTextView = findViewById(R.id.date_debut_text_view);
         dateFinTextView = findViewById(R.id.date_fin_text_view);
+        marqueModelTextView = findViewById(R.id.marque_model_version_text_view);
+        prixJournalierTextView = findViewById(R.id.prix_journalier_text_view);
         coutTextView = findViewById(R.id.cout_text_view);
         
         backBtn = findViewById(R.id.back_btn);
@@ -64,6 +79,44 @@ public class ReservationActivity extends AppCompatActivity {
             }
         });
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
+        if (firebaseAuth.getCurrentUser() != null) {
+            docId = getIntent().getStringExtra("docId");
+        } else {
+            Toast.makeText(this, "Vous n'avez pas accès", Toast.LENGTH_SHORT).show();
+        }
+
+        firebaseFirestore.collection("locationVoiture").document(docId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                if (task.isSuccessful()) {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot != null && documentSnapshot.exists()) {
+                        marque = documentSnapshot.getString("marque");
+                        modele = documentSnapshot.getString("modele");
+                        prixJournalier = documentSnapshot.getLong("prixJournalier").floatValue();
+
+                        marqueModelTextView.setText(marque + " " + modele);
+                        prixJournalierTextView.setText(String.valueOf(prixJournalier));
+
+
+
+                    } else {
+                        Toast.makeText(ReservationActivity.this, "Document does not exist", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(ReservationActivity.this, "Erreur = " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
         //La date de fin doit etre supérieure à la det de début.
 
         int NbJours;
@@ -74,7 +127,7 @@ public class ReservationActivity extends AppCompatActivity {
           Puis l'afficher ds le TextView Prix'*/
 
         //Au click, enregistrer ces 2 dates, cette multiplication ds la bdd t aller sur la page profil.
-    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setDate_Debut() {
@@ -92,7 +145,7 @@ public class ReservationActivity extends AppCompatActivity {
         }, year, month, date);
 
         datePickerDialog.show();
-    }
+}
 
         private void setDate_Fin(){
             Calendar calendar = Calendar.getInstance();
@@ -111,5 +164,4 @@ public class ReservationActivity extends AppCompatActivity {
             datePickerDialog.show();
 
         }
-
-    }
+}

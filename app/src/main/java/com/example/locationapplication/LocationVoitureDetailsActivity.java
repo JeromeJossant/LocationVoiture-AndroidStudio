@@ -59,8 +59,13 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
         });
 
         reservationBtn.setOnClickListener(v -> {
-            startActivity(new Intent(LocationVoitureDetailsActivity.this, ReservationActivity.class));
-            Toast.makeText(LocationVoitureDetailsActivity.this, "Réservation en cours...", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LocationVoitureDetailsActivity.this, ReservationActivity.class);
+            intent.putExtra("marque", marque);
+            intent.putExtra("modele", modele);
+            intent.putExtra("prixJournalier", prixJournalier);
+            intent.putExtra("docId", docId);
+            startActivity(intent);
+            Toast.makeText(LocationVoitureDetailsActivity.this, "Réservation en cours", Toast.LENGTH_SHORT).show();
         });
 
         deleteLocationBtn.setOnClickListener(v -> {

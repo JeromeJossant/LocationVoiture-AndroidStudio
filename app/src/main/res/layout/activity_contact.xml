@@ -7,8 +7,6 @@
     android:background="@color/my_color"
     tools:context=".ContactActivity">
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,95 +41,100 @@
 
                 </ImageButton>
 
-
             </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/rel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="14dp">
 
-                <LinearLayout
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/title_bar_layout">
+                <RelativeLayout
+                    android:id="@+id/rel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="14dp">
 
-                    <EditText
-                        android:id="@+id/edit_text_nom"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@drawable/rounded_corner"
-                        android:ems="10"
-                        android:backgroundTint="@color/color_button"
-                        android:inputType="textPersonName"
-                        android:textColor="@color/white"
-                        android:hint="Nom" />
-
-                    <EditText
-                        android:id="@+id/edit_text_prenom"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-
-                        android:background="@drawable/rounded_corner"
-                        android:ems="10"
-                        android:backgroundTint="@color/color_button"
-                        android:inputType="textPersonName"
-                        android:textColor="@color/white"
-                        android:hint="Prénom" />
-
-                    <EditText
-                        android:id="@+id/edit_text_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@drawable/rounded_corner"
-                        android:ems="10"
-                        android:backgroundTint="@color/color_button"
-                        android:textColor="@color/white"
-                        android:inputType="textPersonName"
-                        android:hint="Email" />
-
-                    <EditText
-                        android:id="@+id/edit_text_message"
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@drawable/rounded_corner"
-                        android:ems="10"
-                        android:backgroundTint="@color/color_button"
-                        android:gravity="start|top"
-                        android:inputType="textMultiLine"
-                        android:textColor="@color/white"
-
-                        android:hint="Veuillez saisir votre massage " />
-
-                    <Button
-                        android:id="@+id/button_envoyer"
-                        android:layout_gravity="center"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:textAlignment="center"
-                        android:backgroundTint="@color/color_button"
-                        android:textColor="@color/white"
-                        android:textSize="30dp"
-                        android:textStyle="bold"
-                        android:text="Envoyer"/>
-                </LinearLayout>
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/edit_text_nom"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/rounded_corner"
+                            android:ems="10"
+                            android:backgroundTint="@color/color_button"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/white"
+                            android:hint="Nom" />
+
+                        <EditText
+                            android:id="@+id/edit_text_prenom"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+
+                            android:background="@drawable/rounded_corner"
+                            android:ems="10"
+                            android:backgroundTint="@color/color_button"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/white"
+                            android:hint="Prénom" />
+
+                        <EditText
+                            android:id="@+id/edit_text_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/rounded_corner"
+                            android:ems="10"
+                            android:backgroundTint="@color/color_button"
+                            android:textColor="@color/white"
+                            android:inputType="textPersonName"
+                            android:hint="Email" />
+
+                        <EditText
+                            android:id="@+id/edit_text_message"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/rounded_corner"
+                            android:ems="10"
+                            android:backgroundTint="@color/color_button"
+                            android:gravity="start|top"
+                            android:inputType="textMultiLine"
+                            android:textColor="@color/white"
+
+                            android:hint="Veuillez saisir votre massage " />
+
+                        <Button
+                            android:id="@+id/button_envoyer"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:textAlignment="center"
+                            android:backgroundTint="@color/color_button"
+                            android:textColor="@color/white"
+                            android:textSize="30dp"
+                            android:textStyle="bold"
+                            android:text="Envoyer"/>
+                    </LinearLayout>
 
 
-            </RelativeLayout>
-        </LinearLayout>
+                </RelativeLayout>
+            </ScrollView>
+            </LinearLayout>
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
 
 
@@ -139,7 +142,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bottom_navigation_view"
-        app:itemBackground="@color/color_button"
+        android:background="@color/color_button"
         app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"
         app:menu="@menu/menu"

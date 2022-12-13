@@ -30,7 +30,7 @@ public class ListLocationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_list_location);
 
         addLocationBtn = findViewById(R.id.add_location_btn);
         menuBtn = findViewById(R.id.menu_btn);

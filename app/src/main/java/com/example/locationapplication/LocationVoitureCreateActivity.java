@@ -73,15 +73,15 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
     }
 
     void saveLocation() {
-        String locationMarque = marqueEditText.getText().toString();
-        String locationModele = modeleEditText.getText().toString();
-        String locationVersion = versionEditText.getText().toString();
-        String locationPlace = placeEditText.getText().toString();
-        String locationCarburant = carburantEditText.getText().toString();
+        String locationMarque = marqueEditText.getText().toString().trim();
+        String locationModele = modeleEditText.getText().toString().trim();
+        String locationVersion = versionEditText.getText().toString().trim();
+        String locationPlace = placeEditText.getText().toString().trim();
+        String locationCarburant = carburantEditText.getText().toString().trim();
         String locationBoiteVitesse = boiteVitesseEditText.getText().toString();
-        Float locationPrixJournalier = Float.valueOf(prixJournalierEditText.getText().toString());
-        String locationVille = villeEditText.getText().toString();
-        String locationStatut = statutEditText.getText().toString();
+        Float locationPrixJournalier = Float.valueOf(prixJournalierEditText.getText().toString().trim());
+        String locationVille = villeEditText.getText().toString().trim();
+        String locationStatut = statutEditText.getText().toString().trim();
 
         boolean isValidateData = validateData(locationMarque, locationModele, locationVersion, locationPlace, locationCarburant, locationBoiteVitesse, locationPrixJournalier, locationVille, locationStatut);
         if (!isValidateData){

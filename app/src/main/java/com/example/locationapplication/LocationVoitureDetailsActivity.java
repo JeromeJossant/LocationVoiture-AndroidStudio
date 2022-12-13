@@ -134,7 +134,7 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
                         placeTextView.setText(place);
                         boiteVitesseTextView.setText(boiteVitesse);
                         carburantTexView.setText(carburant);
-                        prixJournalierTextView.setText(prixJournalier.toString());
+                        prixJournalierTextView.setText(prixJournalier.toString()+ " €/J");
                         villeTextView.setText(ville);
                         statutTextView.setText(statut);
                         dateTimestampTextView.setText(Utility.timestampToString(dateTimestamp));

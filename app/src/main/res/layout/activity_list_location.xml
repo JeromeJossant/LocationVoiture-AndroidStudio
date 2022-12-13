@@ -61,14 +61,15 @@
     </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_navigation_view"
-        app:itemBackground="@color/color_button"
-        app:itemTextColor="@drawable/selector"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_button"
         app:itemIconTint="@drawable/selector"
-        app:menu="@menu/menu"
-        android:layout_alignParentBottom="true">
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu">
+
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </RelativeLayout>

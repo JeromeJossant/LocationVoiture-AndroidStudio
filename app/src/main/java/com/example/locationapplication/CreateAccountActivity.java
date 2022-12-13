@@ -59,9 +59,9 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     void createAccount() {
 
-        String email = emailEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        String confirmPassword = confirmPasswordEditText.getText().toString();
+        String email = emailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+        String confirmPassword = confirmPasswordEditText.getText().toString().trim();
 
         boolean isValidateData = validateData(email, password, confirmPassword);
         if (!isValidateData) {

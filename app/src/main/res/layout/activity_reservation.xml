@@ -133,6 +133,18 @@
 
         </com.google.android.material.button.MaterialButton>
 
+        <TextView
+            android:id="@+id/prix_journalier_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/color_button"
+            android:hint="coût journalier "
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
         <ProgressBar
             android:layout_width="24dp"
             android:layout_height="64dp"

@@ -151,17 +151,6 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
-            <EditText
-                android:id="@+id/location_statut_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
-                android:background="@drawable/rounded_corner"
-                android:backgroundTint="@color/color_button"
-                android:hint="disponible / indisponible"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
 
 
         </LinearLayout>

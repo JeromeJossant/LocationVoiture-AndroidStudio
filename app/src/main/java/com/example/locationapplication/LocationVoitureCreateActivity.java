@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.locationapplication.models.LocationVoiture;
@@ -19,14 +20,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 
+import java.util.Locale;
+
 public class LocationVoitureCreateActivity extends AppCompatActivity {
 
 
-    EditText marqueEditText, modeleEditText, versionEditText, placeEditText, carburantEditText, boiteVitesseEditText, prixJournalierEditText, villeEditText, statutEditText;
+    EditText marqueEditText, modeleEditText, versionEditText, placeEditText, carburantEditText, boiteVitesseEditText, prixJournalierEditText, villeEditText;
     ImageButton saveLocationBtn, backBtn;
     Vibrator vibrator;
-    String marque, modele, place, carburant, boiteVitesse, ville, statut, docId;
-    Float prixJournalier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,32 +42,9 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         boiteVitesseEditText = findViewById(R.id.location_boiteV_text);
         prixJournalierEditText = findViewById(R.id.location_prixJ_text);
         villeEditText = findViewById(R.id.location_ville_text);
-        statutEditText = findViewById(R.id.location_statut_text);
         saveLocationBtn = findViewById(R.id.save_location_btn);
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         backBtn = findViewById(R.id.back_btn);
-
-
-        //recevoir les données
-        marque = getIntent().getStringExtra("marque");
-        modele = getIntent().getStringExtra("modele");
-        place = getIntent().getStringExtra("place");
-        carburant = getIntent().getStringExtra("carburant");
-        boiteVitesse = getIntent().getStringExtra("boiteVitesse");
-        ville = getIntent().getStringExtra("ville");
-        statut = getIntent().getStringExtra("statut");
-        prixJournalier = getIntent().getFloatExtra("prixJournalier", 0);
-        docId = getIntent().getStringExtra("docId");
-
-        marqueEditText.setText(marque);
-        modeleEditText.setText(modele);
-        placeEditText.setText(place);
-        carburantEditText.setText(carburant);
-        boiteVitesseEditText.setText(boiteVitesse);
-        villeEditText.setText(ville);
-        statutEditText.setText(statut);
-        prixJournalierEditText.setText(String.valueOf(prixJournalier));
-
 
         saveLocationBtn.setOnClickListener( (v) -> saveLocation());
         backBtn.setOnClickListener( (v) -> finish());
@@ -81,9 +59,8 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         String locationBoiteVitesse = boiteVitesseEditText.getText().toString();
         Float locationPrixJournalier = Float.valueOf(prixJournalierEditText.getText().toString().trim());
         String locationVille = villeEditText.getText().toString().trim();
-        String locationStatut = statutEditText.getText().toString().trim();
 
-        boolean isValidateData = validateData(locationMarque, locationModele, locationVersion, locationPlace, locationCarburant, locationBoiteVitesse, locationPrixJournalier, locationVille, locationStatut);
+        boolean isValidateData = validateData(locationMarque, locationModele, locationVersion, locationPlace, locationCarburant, locationBoiteVitesse, locationPrixJournalier, locationVille);
         if (!isValidateData){
             return;
         }
@@ -99,13 +76,13 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         locationVoiture.setBoiteVitesse(locationBoiteVitesse);
         locationVoiture.setPrixJournalier(locationPrixJournalier);
         locationVoiture.setVille(locationVille);
-        locationVoiture.setStatut(locationStatut);
+        locationVoiture.setStatut("Disponible");
         locationVoiture.setTimestamp(Timestamp.now());
         locationVoiture.setUserId(currentUser.getUid());
         saveLocationVoitureToFirebase(locationVoiture);
     }
 
-    boolean validateData(String locationMarque, String locationModele, String locationVersion, String locationPlace, String locationCarburant, String locationBoiteVitesse, Float locationPrixJournalier, String locationVille, String locationStatut) {
+    boolean validateData(String locationMarque, String locationModele, String locationVersion, String locationPlace, String locationCarburant, String locationBoiteVitesse, Float locationPrixJournalier, String locationVille) {
 
         if (locationMarque == null || locationMarque.isEmpty()) {
             marqueEditText.setError("La marque a besoin d'être rentré");
@@ -144,11 +121,6 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         }
         if (locationVille == null || locationVille.isEmpty()) {
             villeEditText.setError("La ville a besoin d'être rentré");
-            vibrator.vibrate(75);
-            return false;
-        }
-        if (locationStatut == null || locationStatut.isEmpty()) {
-            statutEditText.setError("Le statut a besoin d'être rentré");
             vibrator.vibrate(75);
             return false;
         }

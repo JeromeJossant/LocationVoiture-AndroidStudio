@@ -19,6 +19,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
 
+import java.util.Locale;
+
 public class ListLocationActivity extends AppCompatActivity {
 
     FloatingActionButton addLocationBtn;
@@ -92,7 +94,7 @@ public class ListLocationActivity extends AppCompatActivity {
     }
 
     void setupRecyclerView(){
-        Query query = Utility.getCollectionReferenceForLocationVoiture().orderBy("timestamp", Query.Direction.DESCENDING);
+        Query query = Utility.getCollectionReferenceForLocationVoiture().whereEqualTo("statut", "Disponible").orderBy("timestamp", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<LocationVoiture> options = new FirestoreRecyclerOptions.Builder<LocationVoiture>()
                 .setQuery(query, LocationVoiture.class)
                 .build();

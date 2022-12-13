@@ -1,6 +1,7 @@
 package com.example.locationapplication;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -69,17 +71,29 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
         });
 
         deleteLocationBtn.setOnClickListener(v -> {
-            firebaseFirestore.collection("locationVoiture").document(docId).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Confirmer la suppression");
+            builder.setMessage("Êtes-vous sûr de vouloir supprimer cette annonce?");
+
+            builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                 @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(LocationVoitureDetailsActivity.this, "Suppression réussie", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LocationVoitureDetailsActivity.this, ListLocationActivity.class));
-                    } else {
-                        Toast.makeText(LocationVoitureDetailsActivity.this, "Erreur = " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+                public void onClick(DialogInterface dialog, int which) {
+                    firebaseFirestore.collection("locationVoiture").document(docId).delete();
+                    Toast.makeText(LocationVoitureDetailsActivity.this, "Suppression réussie", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LocationVoitureDetailsActivity.this, ListLocationActivity.class));
                 }
             });
+
+            builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+        // Afficher le pop-up
+            builder.show();
+
         });
 
         editLocationBtn.setOnClickListener(v -> {
@@ -142,9 +156,11 @@ public class LocationVoitureDetailsActivity extends AppCompatActivity {
                         if (currentUser.getUid().equals(uid)) { // Test currentUser et userId de la task
                             deleteLocationBtn.setVisibility(View.VISIBLE);
                             editLocationBtn.setVisibility(View.VISIBLE);
+                            reservationBtn.setVisibility(View.GONE);
                         } else {
                             deleteLocationBtn.setVisibility(View.GONE);
                             editLocationBtn.setVisibility(View.GONE);
+                            reservationBtn.setVisibility(View.VISIBLE);
                         }
                     } else {
                         Toast.makeText(LocationVoitureDetailsActivity.this, "Document does not exist", Toast.LENGTH_SHORT).show();

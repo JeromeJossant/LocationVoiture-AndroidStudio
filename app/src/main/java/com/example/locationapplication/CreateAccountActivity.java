@@ -114,19 +114,16 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             emailEditText.setError("Le mail n'est pas valide");
-            vibrator.vibrate(75);
             return false;
         }
 
         if (password.length()<6){
             passwordEditText.setError("Le mot de passe est trop court");
-            vibrator.vibrate(75);
             return false;
         }
 
         if (!password.equals(confirmPassword)){
             confirmPasswordEditText.setError("Vous avez entré deux mots de passe différents");
-            vibrator.vibrate(75);
             return false;
         }
         return true;

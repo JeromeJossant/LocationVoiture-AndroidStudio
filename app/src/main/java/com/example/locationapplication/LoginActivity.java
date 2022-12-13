@@ -90,15 +90,13 @@ public class LoginActivity extends AppCompatActivity {
 
     boolean validateData(String email, String password){
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches() || email.isEmpty()){
             emailEditText.setError("Le mail n'est pas valide");
-            vibrator.vibrate(75);
             return false;
         }
 
         if (password.length()<6){
             passwordEditText.setError("Le mot de passe est trop court");
-            vibrator.vibrate(75);
             return false;
         }
         return true;

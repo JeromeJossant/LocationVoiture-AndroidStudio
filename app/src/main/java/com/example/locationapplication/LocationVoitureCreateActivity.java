@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -21,7 +24,7 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
 
     EditText marqueEditText, modeleEditText, versionEditText, placeEditText, carburantEditText, boiteVitesseEditText, prixJournalierEditText, villeEditText, statutEditText;
     ImageButton saveLocationBtn, backBtn;
-
+    Vibrator vibrator;
     String marque, modele, place, carburant, boiteVitesse, ville, statut, docId;
     Float prixJournalier;
 
@@ -40,6 +43,7 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
         villeEditText = findViewById(R.id.location_ville_text);
         statutEditText = findViewById(R.id.location_statut_text);
         saveLocationBtn = findViewById(R.id.save_location_btn);
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         backBtn = findViewById(R.id.back_btn);
 
 
@@ -105,38 +109,47 @@ public class LocationVoitureCreateActivity extends AppCompatActivity {
 
         if (locationMarque == null || locationMarque.isEmpty()) {
             marqueEditText.setError("La marque a besoin d'être rentré");
+            vibrator.vibrate(75);
             return false;
         }
         if (locationModele == null || locationModele.isEmpty()) {
             modeleEditText.setError("Le modèle a besoin d'être rentré");
+            vibrator.vibrate(75);
             return false;
         }
         if (locationVersion == null || locationVersion.isEmpty()) {
             versionEditText.setError("La version a besoin d'être rentré");
+            vibrator.vibrate(75);
             return false;
         }
         if (locationPlace == null || locationPlace.isEmpty()) {
             placeEditText.setError("Le nombre de place a besoin d'être rentré");
+            vibrator.vibrate(75);
             return false;
         }
         if (locationCarburant == null || locationCarburant.isEmpty()) {
             carburantEditText.setError("Le carburant a besoin d'être rentré");
+            vibrator.vibrate(75);
             return false;
         }
         if (locationBoiteVitesse == null || locationBoiteVitesse.isEmpty()) {
             boiteVitesseEditText.setError("La boite de vitesse a besoin d'être rentré");
+            vibrator.vibrate(75);
             return false;
         }
         if (locationPrixJournalier == null || locationPrixJournalier == 0) {
             prixJournalierEditText.setError("Le prix journalier a besoin d'être rentré");
+            vibrator.vibrate(75);
             return false;
         }
         if (locationVille == null || locationVille.isEmpty()) {
             villeEditText.setError("La ville a besoin d'être rentré");
+            vibrator.vibrate(75);
             return false;
         }
         if (locationStatut == null || locationStatut.isEmpty()) {
             statutEditText.setError("Le statut a besoin d'être rentré");
+            vibrator.vibrate(75);
             return false;
         }
         return true;

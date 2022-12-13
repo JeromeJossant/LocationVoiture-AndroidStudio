@@ -52,7 +52,7 @@ public class LocationVoitureAdapter extends FirestoreRecyclerAdapter<LocationVoi
 
     class LocationVoitureViewHolder extends RecyclerView.ViewHolder {
 
-        TextView marqueTextView, modelTextView, prixHoraireTextView, prixJournalierTextView,timestampTextView;
+        TextView marqueTextView, modelTextView, prixJournalierTextView,timestampTextView;
 
         public LocationVoitureViewHolder(@NonNull View itemView) {
             super(itemView);

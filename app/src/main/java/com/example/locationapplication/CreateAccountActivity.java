@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     EditText emailEditText, passwordEditText, confirmPasswordEditText, nomEditText, prenomEditText;
     Button createAccountBtn;
     ProgressBar progressBar;
+    Vibrator vibrator;
     TextView loginBtnTextView;
 
     @Override
@@ -112,16 +114,19 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             emailEditText.setError("Le mail n'est pas valide");
+            vibrator.vibrate(75);
             return false;
         }
 
         if (password.length()<6){
             passwordEditText.setError("Le mot de passe est trop court");
+            vibrator.vibrate(75);
             return false;
         }
 
         if (!password.equals(confirmPassword)){
             confirmPasswordEditText.setError("Vous avez entré deux mots de passe différents");
+            vibrator.vibrate(75);
             return false;
         }
         return true;

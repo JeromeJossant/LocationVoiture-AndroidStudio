@@ -42,9 +42,7 @@ public class ProfilActivity extends AppCompatActivity {
 
         backAnnonceBtn.setOnClickListener(v -> finish());
 
-        backBtn.setOnClickListener((v) -> {
-            startActivity(new Intent(ProfilActivity.this, ListLocationActivity.class));
-        });
+        backBtn.setOnClickListener((v) -> finish());
 
         if (firebaseAuth.getCurrentUser() != null) {
             currentUser = firebaseAuth.getCurrentUser();

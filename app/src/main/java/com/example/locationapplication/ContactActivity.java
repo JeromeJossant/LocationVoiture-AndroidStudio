@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.locationapplication.models.Contact;
@@ -24,8 +26,8 @@ public class ContactActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     EditText editNom, editPrenom, editEmail, editMessage;
-    String nom, prenom, email, message;
     Button button;
+    ImageButton menuBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,21 +39,14 @@ public class ContactActivity extends AppCompatActivity {
         editPrenom = findViewById(R.id.edit_text_prenom);
         editEmail = findViewById(R.id.edit_text_email);
         editMessage = findViewById(R.id.edit_text_message);
+        menuBtn = findViewById(R.id.menu_btn);
 
         bottomNavigationView.setSelectedItemId(R.id.contact);
 
+        menuBtn.setOnClickListener((v) ->showMenu());
 
         button.setOnClickListener((v) -> envoimessage());
 
-        nom = getIntent().getStringExtra("nom");
-        prenom = getIntent().getStringExtra("prenom");
-        email = getIntent().getStringExtra("email");
-        message = getIntent().getStringExtra("message");
-
-        editNom.setText(nom);
-        editPrenom.setText(prenom);
-        editEmail.setText(email);
-        editMessage.setText(message);
     /*    button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,11 +133,35 @@ public class ContactActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(ContactActivity.this, "Votre message a été envoié avec success.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ContactActivity.this, "Votre message a été envoyé avec success.", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(ContactActivity.this, "Erreur, votre message n'a pas été envoié !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ContactActivity.this, "Erreur, votre message n'a pas été envoyé !", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+    void showMenu(){
+        PopupMenu popupMenu = new PopupMenu(ContactActivity.this, menuBtn);
+        popupMenu.getMenu().add("Profil");
+        popupMenu.getMenu().add("Mes annonces");
+        popupMenu.getMenu().add("Se déconcecter");
+        popupMenu.show();
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if (menuItem.getTitle() == "Se déconcecter") {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(ContactActivity.this, LoginActivity.class));
+                    finish();
+                } if (menuItem.getTitle() == "Profil") {
+                    startActivity(new Intent(ContactActivity.this, ProfilActivity.class));
+                }
+                if (menuItem.getTitle() == "Mes annonces") {
+                    startActivity(new Intent(ContactActivity.this, myAdsActivity.class));
+                }
+                return false;
             }
         });
     }
